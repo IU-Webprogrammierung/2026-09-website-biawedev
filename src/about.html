@@ -29,6 +29,64 @@
 
     <main id="main-content">
         <h1>Über mich / Kontakt</h1>
+
+        <section class="about" aria-labelledby="about-heading">
+            <figure class="about__figure">
+                <img src="images/about-garden.jpg" alt="Ich im Garten bei meinen Chilipflanzen">
+            </figure>
+            <div class="about__content">
+                <h2 id="about-heading">Die Geschichte hinter der Chili-Welt</h2>
+                <p>Hi, ich bin Julian. Alles begann mit den Samen einer Supermarkt-Chili, aus denen auf meiner Fensterbank die ersten Pflanzen wuchsen.</p>
+                <p>Mich begeistert, wie viel Geschmack und Schärfe in so einer kleinen Frucht steckt und wie unterschiedlich die Sorten sind. Mit dieser Website möchte ich meine Erfahrungen aus Anbau, Ernte und Verarbeitung teilen, damit Einsteiger schneller zu ihrer ersten eigenen Ernte kommen.</p>
+            </div>
+        </section>
+
+        <section class="contact-details" aria-labelledby="contact-details-heading">
+            <h2 id="contact-details-heading">Kontakt-Details</h2>
+            <p>Du erreichst mich über diese Kanäle:</p>
+            <ul class="contact-details__list">
+                <li><a href="mailto:julian.biebl@example.com">E-Mail</a></li>
+                <li><a href="https://www.instagram.com/">Instagram</a></li>
+                <li><a href="https://github.com/BiaweDev">GitHub</a></li>
+            </ul>
+        </section>
+
+        <section class="contact-form" aria-labelledby="contact-form-heading">
+            <h2 id="contact-form-heading">Nachricht senden</h2>
+            <p>Fragen zum Anbau oder Feedback zur Seite? Felder mit * sind Pflichtfelder.</p>
+
+            <form action="#" method="post">
+                <div class="form-field">
+                    <label for="first-name">Vorname *</label>
+                    <input type="text" id="first-name" name="first-name" autocomplete="given-name" placeholder="z. B. Max" required>
+                </div>
+
+                <div class="form-field">
+                    <label for="last-name">Nachname *</label>
+                    <input type="text" id="last-name" name="last-name" autocomplete="family-name" placeholder="z. B. Mustermann" required>
+                </div>
+
+                <div class="form-field">
+                    <label for="email">E-Mail-Adresse *</label>
+                    <input type="email" id="email" name="email" autocomplete="email" placeholder="z. B. max@example.com" required>
+                </div>
+
+                <div class="form-field">
+                    <label for="message">Nachricht *</label>
+                    <textarea id="message" name="message" rows="6" required></textarea>
+                </div>
+
+                <div class="form-field form-field--consent">
+                    <input type="checkbox" id="consent" name="consent" required>
+                    <label for="consent">
+                        Ich habe die <a href="datenschutz.html">Datenschutzerklärung</a> gelesen und bin mit der
+                        Verarbeitung meiner Angaben zur Bearbeitung meiner Anfrage einverstanden. *
+                    </label>
+                </div>
+
+                <button type="submit">Nachricht senden</button>
+            </form>
+        </section>
     </main>
 
     <footer class="site-footer">
