@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" width="320" height="320" role="presentation" focusable="false">
+    <!-- Soil mound -->
+    <ellipse cx="160" cy="268" rx="96" ry="24" fill="#6D4C41"/>
+    <ellipse cx="160" cy="260" rx="80" ry="16" fill="#8D6E63"/>
+    <!-- Stem -->
+    <path d="M160 262 C160 220 158 180 164 130" fill="none" stroke="#2E7D32" stroke-width="8" stroke-linecap="round"/>
+    <!-- Cotyledon leaves -->
+    <path d="M162 150 C130 150 104 130 96 100 C128 98 156 116 162 150 Z" fill="#43A047"/>
+    <path d="M164 130 C196 130 222 110 230 80 C198 78 170 96 164 130 Z" fill="#2E7D32"/>
+    <!-- Tiny chili bud -->
+    <path d="M164 130 C172 110 184 104 192 112 C186 128 176 134 164 130 Z" fill="#C62828"/>
+</svg>

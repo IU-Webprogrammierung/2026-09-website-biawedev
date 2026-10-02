@@ -35,8 +35,26 @@
     </header>
 
     <main id="main-content">
-        <h1>Seite nicht gefunden</h1>
-        <p>Die von Ihnen aufgerufene Seite existiert nicht mehr oder ist temporär nicht verfügbar.</p>
+        <!-- Error message: text and decorative illustration -->
+        <section class="error-page" aria-labelledby="error-heading">
+            <div class="error-page__content">
+                <p class="error-page__code">Fehler 404</p>
+                <h1 id="error-heading">Hier wächst leider nichts</h1>
+                <p class="error-page__text">
+                    Diese Seite gibt es nicht (mehr). Vielleicht ist die Adresse falsch oder die Seite
+                    wurde verschoben. Mit diesen Links findest du zurück:
+                </p>
+
+                <!-- Links styled as buttons: they lead to other pages -->
+                <ul class="error-page__actions">
+                    <li><a class="button button--primary" href="index.html">Zur Startseite</a></li>
+                    <li><a class="button button--secondary" href="growing.html">Zum Anbau-Guide</a></li>
+                </ul>
+            </div>
+
+            <!-- Decorative seedling: empty alt, as the heading already carries the message -->
+            <img class="error-page__image" src="images/404-seedling.svg" alt="" width="320" height="320">
+        </section>
     </main>
 
     <!-- Site footer with page links and legal links -->
