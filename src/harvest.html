@@ -102,6 +102,151 @@
                 </article>
             </li>
         </ul>
+
+        <!-- Modals: short guides for each processing method, opened by the buttons with data-dialog -->
+        <dialog id="dialog-fresh" aria-labelledby="dialog-fresh-title">
+            <article class="dialog__content">
+                <header class="dialog__header">
+                    <h2 id="dialog-fresh-title">Frisch</h2>
+                    <form method="dialog">
+                        <button class="dialog__close" type="submit">Schließen</button>
+                    </form>
+                </header>
+                <p>Frisch geerntet haben Chilis das meiste Aroma. Du kannst sie roh oder gegart verwenden.</p>
+                <h3>Verwendung</h3>
+                <ul>
+                    <li>In dünne Ringe geschnitten auf Pizza, Salat oder Sandwiches</li>
+                    <li>Fein gehackt in Salsa, Guacamole oder Dips</li>
+                    <li>Mitgebraten in Pfannengerichten, Currys und Eintöpfen</li>
+                </ul>
+                <h3>Lagerung</h3>
+                <ul>
+                    <li>Im Gemüsefach des Kühlschranks halten sich ungewaschene Schoten ein bis zwei Wochen.</li>
+                    <li>Zum Einfrieren die Schoten ganz oder in Stücken in einen Beutel geben. Sie bleiben monatelang verwendbar, werden aber weich.</li>
+                </ul>
+                <p>Die Schärfe sitzt vor allem in den hellen Scheidewänden. Wer es milder mag, entfernt Scheidewände und Kerne.</p>
+            </article>
+        </dialog>
+
+        <dialog id="dialog-drying" aria-labelledby="dialog-drying-title">
+            <article class="dialog__content">
+                <header class="dialog__header">
+                    <h2 id="dialog-drying-title">Trocknen</h2>
+                    <form method="dialog">
+                        <button class="dialog__close" type="submit">Schließen</button>
+                    </form>
+                </header>
+                <p>Getrocknete Chilis halten sich über ein Jahr und sind die Grundlage für Flocken und Pulver. Besonders gut trocknen kleine, dünnfleischige Sorten wie Cayenne.</p>
+                <h3>Drei Methoden</h3>
+                <dl>
+                    <dt>An der Luft</dt>
+                    <dd>Schoten auf einen Faden ziehen und an einem warmen, luftigen, trockenen Ort aufhängen. Das dauert zwei bis vier Wochen.</dd>
+                    <dt>Im Dörrautomat</dt>
+                    <dd>Halbierte Schoten bei etwa 50 bis 60 °C trocknen, je nach Dicke 8 bis 12 Stunden.</dd>
+                    <dt>Im Backofen</dt>
+                    <dd>Bei etwa 50 bis 60 °C mit einem Kochlöffel in der Tür trocknen, damit die Feuchtigkeit entweichen kann. Das dauert etwa 6 bis 10 Stunden.</dd>
+                </dl>
+                <p>Die Chilis sind fertig, wenn sie rascheln und beim Biegen brechen. Sind sie noch biegsam, brauchen sie mehr Zeit, sonst schimmeln sie bei der Lagerung.</p>
+            </article>
+        </dialog>
+
+        <dialog id="dialog-flakes" aria-labelledby="dialog-flakes-title">
+            <article class="dialog__content">
+                <header class="dialog__header">
+                    <h2 id="dialog-flakes-title">Chiliflocken</h2>
+                    <form method="dialog">
+                        <button class="dialog__close" type="submit">Schließen</button>
+                    </form>
+                </header>
+                <p>Chiliflocken sind schnell gemacht und vielseitig: Sie passen auf Pizza, Pasta, Eier und in Marinaden.</p>
+                <h3>So geht’s</h3>
+                <ol>
+                    <li>Die Chilis vollständig trocknen, siehe Karte „Trocknen“.</li>
+                    <li>Stiele entfernen. Wer es milder mag, entfernt auch einen Teil der Kerne.</li>
+                    <li>Die Schoten mit einem Mörser, einem Messer oder kurz im Zerkleinerer grob zerkleinern.</li>
+                    <li>In ein sauberes, trockenes Glas füllen und beschriften.</li>
+                </ol>
+                <h3>Gut zu wissen</h3>
+                <ul>
+                    <li>Beim Zerkleinern entsteht scharfer Staub. Handschuhe tragen, nicht ins Gesicht fassen und nicht direkt über das Gefäß beugen.</li>
+                    <li>Kühl und dunkel gelagert halten die Flocken ihr Aroma etwa ein Jahr.</li>
+                </ul>
+            </article>
+        </dialog>
+
+        <dialog id="dialog-powder" aria-labelledby="dialog-powder-title">
+            <article class="dialog__content">
+                <header class="dialog__header">
+                    <h2 id="dialog-powder-title">Chilipulver</h2>
+                    <form method="dialog">
+                        <button class="dialog__close" type="submit">Schließen</button>
+                    </form>
+                </header>
+                <p>Selbst gemahlenes Chilipulver schmeckt deutlich intensiver als gekauftes, weil du genau weißt, welche Sorte drinsteckt. Du kannst auch mehrere Sorten mischen.</p>
+                <h3>So geht’s</h3>
+                <ol>
+                    <li>Die Chilis vollständig trocknen. Sie müssen beim Biegen brechen.</li>
+                    <li>Stiele entfernen und die Schoten in Stücke brechen.</li>
+                    <li>In einer Gewürz- oder Kaffeemühle portionsweise fein mahlen.</li>
+                    <li>Das Pulver durch ein feines Sieb geben und gröbere Reste erneut mahlen.</li>
+                    <li>Luftdicht, kühl und dunkel lagern.</li>
+                </ol>
+                <h3>Sicherheitshinweis</h3>
+                <p>Nach dem Mahlen den Deckel der Mühle erst nach einigen Minuten öffnen, damit sich der Staub setzt. Handschuhe tragen und das Gerät gründlich reinigen.</p>
+            </article>
+        </dialog>
+
+        <dialog id="dialog-oil" aria-labelledby="dialog-oil-title">
+            <article class="dialog__content">
+                <header class="dialog__header">
+                    <h2 id="dialog-oil-title">Chiliöl</h2>
+                    <form method="dialog">
+                        <button class="dialog__close" type="submit">Schließen</button>
+                    </form>
+                </header>
+                <p>Chiliöl verleiht Nudeln, Suppen und Pizza Schärfe und Aroma. Entscheidend ist, dass du nur vollständig getrocknete Chilis verwendest.</p>
+                <h3>So geht’s</h3>
+                <ol>
+                    <li>Getrocknete Chilis oder Chiliflocken in ein sauberes, trockenes Glas geben.</li>
+                    <li>Neutrales Öl wie Raps- oder Sonnenblumenöl auf etwa 80 bis 90 °C erhitzen.</li>
+                    <li>Das heiße Öl über die Chilis gießen, bis sie bedeckt sind.</li>
+                    <li>Abkühlen lassen, verschließen und ein bis zwei Wochen an einem dunklen Ort ziehen lassen.</li>
+                </ol>
+                <h3>Sicherheitshinweis</h3>
+                <p>Frische Chilis in Öl können gefährliche Bakterien (Botulismus) bilden. Verwende deshalb nur getrocknete Schoten, bewahre das Öl im Kühlschrank auf und verbrauche es innerhalb weniger Wochen.</p>
+            </article>
+        </dialog>
+
+        <dialog id="dialog-hot-sauce" aria-labelledby="dialog-hot-sauce-title">
+            <article class="dialog__content">
+                <header class="dialog__header">
+                    <h2 id="dialog-hot-sauce-title">Hot Sauce</h2>
+                    <form method="dialog">
+                        <button class="dialog__close" type="submit">Schließen</button>
+                    </form>
+                </header>
+                <p>Eine fermentierte Hot Sauce schmeckt komplexer als eine einfach gekochte. Das Prinzip ist simpel: Milchsäurebakterien vergären die Chilis in Salzlake, danach wird alles püriert und abgefüllt.</p>
+                <h3>Zutaten</h3>
+                <ul>
+                    <li>500 g frische Chilis</li>
+                    <li>Etwa 15 g Salz, das sind rund 3 % des Gewichts</li>
+                    <li>Optional: 2 Knoblauchzehen, etwas Zwiebel oder Möhre für Süße</li>
+                    <li>Etwa 50 ml Essig zum Abschmecken</li>
+                </ul>
+                <h3>So geht’s</h3>
+                <ol>
+                    <li>Chilis entstielen, grob zerkleinern und mit dem Salz in ein sauberes Glas füllen.</li>
+                    <li>So viel Wasser auffüllen, dass alles bedeckt ist, und die Zutaten mit einem Gewicht unter der Oberfläche halten.</li>
+                    <li>Das Glas locker verschließen und bei Zimmertemperatur etwa ein bis zwei Wochen gären lassen. Dabei täglich kurz entlüften.</li>
+                    <li>Die Maische mit etwas Lake und Essig fein pürieren, kurz aufkochen und in saubere Flaschen füllen.</li>
+                </ol>
+                <h3>Gut zu wissen</h3>
+                <ul>
+                    <li>Weißer Schimmel an der Oberfläche ist Kahmhefe und harmlos. Bei buntem, flauschigem Schimmel das Ganze entsorgen.</li>
+                    <li>Im Kühlschrank hält sich die Sauce mehrere Monate.</li>
+                </ul>
+            </article>
+        </dialog>
     </main>
 
     <!-- Site footer with page links and legal links -->
