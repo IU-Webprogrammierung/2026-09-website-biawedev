@@ -29,6 +29,160 @@
 
     <main id="main-content">
         <h1>Chilisorten</h1>
+        <p>
+            Chilis gehören zur Gattung <i lang="la">Capsicum</i> aus der Familie der Nachtschattengewächse, sind also
+            nah mit Tomaten und Kartoffeln verwandt. Weltweit gibt es mehrere Tausend Sorten, die sich in Form, Farbe,
+            Aroma und Schärfe stark unterscheiden: von der milden, dickfleischigen Schote bis zur kleinen Frucht, bei
+            der schon ein Hauch genügt.
+        </p>
+        <p>
+            Für die Schärfe ist der Stoff Capsaicin verantwortlich. Gemessen wird sie in Scoville-Einheiten (SHU).
+            Gemüsepaprika liegt bei null, eine Jalapeño bei einigen Tausend und die schärfsten Züchtungen erreichen
+            weit über eine Million. Wie scharf eine Schote am Ende wird, hängt neben der Sorte auch von Sonne,
+            Wassergaben und Reifegrad ab.
+        </p>
+        <p>
+            Botanisch teilt man die kultivierten Chilis in fünf Arten ein. Wer die Art kennt, kann Wuchs, Aroma und
+            Ansprüche einer Sorte schon grob einschätzen. Unten findest du zuerst einen Überblick über die fünf Arten,
+            danach stelle ich dir einige bekannte Sorten im Porträt vor.
+        </p>
+
+        <section class="species" aria-labelledby="species-heading">
+            <h2 id="species-heading">Die fünf Chili-Arten</h2>
+            <details class="species__item">
+                <summary><i lang="la">Capsicum annuum</i></summary>
+                <dl>
+                    <dt>Ursprung</dt>
+                    <dd>Mexiko, Mittelamerika</dd>
+                    <dt>Merkmale</dt>
+                    <dd>Die häufigste Art: meist eine weiße Blüte je Knoten, mild bis scharf.</dd>
+                    <dt>Beispiele</dt>
+                    <dd>Jalapeño, Cayenne, Paprika</dd>
+                </dl>
+            </details>
+            <details class="species__item">
+                <summary><i lang="la">Capsicum chinense</i></summary>
+                <dl>
+                    <dt>Ursprung</dt>
+                    <dd>Amazonasgebiet (trotz des Namens nicht China)</dd>
+                    <dt>Merkmale</dt>
+                    <dd>Mehrere Blüten je Knoten, fruchtiges Aroma, sehr scharf.</dd>
+                    <dt>Beispiele</dt>
+                    <dd>Habanero, Scotch Bonnet, Carolina Reaper</dd>
+                </dl>
+            </details>
+            <details class="species__item">
+                <summary><i lang="la">Capsicum baccatum</i></summary>
+                <dl>
+                    <dt>Ursprung</dt>
+                    <dd>Bolivien, Peru</dd>
+                    <dt>Merkmale</dt>
+                    <dd>Blüten mit gelblichen Flecken, fruchtig-zitroniges Aroma.</dd>
+                    <dt>Beispiele</dt>
+                    <dd>Aji Amarillo</dd>
+                </dl>
+            </details>
+            <details class="species__item">
+                <summary><i lang="la">Capsicum frutescens</i></summary>
+                <dl>
+                    <dt>Ursprung</dt>
+                    <dd>Mittel- und Südamerika</dd>
+                    <dt>Merkmale</dt>
+                    <dd>Kleine, aufrecht stehende Früchte, buschiger Wuchs.</dd>
+                    <dt>Beispiele</dt>
+                    <dd>Tabasco</dd>
+                </dl>
+            </details>
+            <details class="species__item">
+                <summary><i lang="la">Capsicum pubescens</i></summary>
+                <dl>
+                    <dt>Ursprung</dt>
+                    <dd>Anden</dd>
+                    <dt>Merkmale</dt>
+                    <dd>Behaarte Blätter, violette Blüten, schwarze Samen.</dd>
+                    <dt>Beispiele</dt>
+                    <dd>Rocoto</dd>
+                </dl>
+            </details>
+        </section>
+
+        <section class="portraits" aria-labelledby="portraits-heading">
+            <h2 id="portraits-heading">Sorten im Porträt</h2>
+            <p>Steckbriefe ausgewählter Sorten. Die Schärfe wird auf einer Skala von 1 bis 5 angegeben.</p>
+
+            <ul class="card-list">
+                <li>
+                    <article class="card">
+                        <img class="card__image" src="images/variety-jalapeno.jpg" alt="" loading="lazy">
+                        <h3 class="card__title">Jalapeño</h3>
+                        <p class="card__species"><i lang="la">Capsicum annuum</i></p>
+                        <p class="card__text">Grün geerntet knackig-frisch, reif rot und leicht süßlich. Passt zu Nachos, Salsa und gefüllt in den Ofen.</p>
+                        <p class="card__heat">
+                            <label for="heat-jalapeno">Schärfe</label>
+                            <meter id="heat-jalapeno" min="1" max="5" value="2">2 von 5</meter>
+                        </p>
+                        <p class="badge">Mexiko</p>
+                        <button class="card__button" type="button" aria-haspopup="dialog" data-dialog="dialog-jalapeno">Mehr erfahren<span class="visually-hidden"> zu Jalapeño</span></button>
+                    </article>
+                </li>
+                <li>
+                    <article class="card">
+                        <img class="card__image" src="images/variety-cayenne.jpg" alt="" loading="lazy">
+                        <h3 class="card__title">Cayenne</h3>
+                        <p class="card__species"><i lang="la">Capsicum annuum</i></p>
+                        <p class="card__text">Scharf mit klarer, neutraler Schärfe. Ideal getrocknet als Pulver oder für Saucen und Eintöpfe.</p>
+                        <p class="card__heat">
+                            <label for="heat-cayenne">Schärfe</label>
+                            <meter id="heat-cayenne" min="1" max="5" value="3">3 von 5</meter>
+                        </p>
+                        <p class="badge">Südamerika</p>
+                        <button class="card__button" type="button" aria-haspopup="dialog" data-dialog="dialog-cayenne">Mehr erfahren<span class="visually-hidden"> zu Cayenne</span></button>
+                    </article>
+                </li>
+                <li>
+                    <article class="card">
+                        <img class="card__image" src="images/variety-habanero.jpg" alt="" loading="lazy">
+                        <h3 class="card__title">Habanero</h3>
+                        <p class="card__species"><i lang="la">Capsicum chinense</i></p>
+                        <p class="card__text">Sehr scharf mit fruchtigem Aroma. Ideal für Hot Sauce, Salsa und Marinaden.</p>
+                        <p class="card__heat">
+                            <label for="heat-habanero">Schärfe</label>
+                            <meter id="heat-habanero" min="1" max="5" value="4">4 von 5</meter>
+                        </p>
+                        <p class="badge">Mittel- und Südamerika</p>
+                        <button class="card__button" type="button" aria-haspopup="dialog" data-dialog="dialog-habanero">Mehr erfahren<span class="visually-hidden"> zu Habanero</span></button>
+                    </article>
+                </li>
+                <li>
+                    <article class="card">
+                        <img class="card__image" src="images/variety-aji-amarillo.jpg" alt="" loading="lazy">
+                        <h3 class="card__title">Aji Amarillo</h3>
+                        <p class="card__species"><i lang="la">Capsicum baccatum</i></p>
+                        <p class="card__text">Fruchtig mit leichter Zitrusnote und mittlerer Schärfe. Die wichtigste Chili der peruanischen Küche, etwa für Ají-Sauce und Ceviche.</p>
+                        <p class="card__heat">
+                            <label for="heat-aji-amarillo">Schärfe</label>
+                            <meter id="heat-aji-amarillo" min="1" max="5" value="3">3 von 5</meter>
+                        </p>
+                        <p class="badge">Peru</p>
+                        <button class="card__button" type="button" aria-haspopup="dialog" data-dialog="dialog-aji-amarillo">Mehr erfahren<span class="visually-hidden"> zu Aji Amarillo</span></button>
+                    </article>
+                </li>
+                <li>
+                    <article class="card">
+                        <img class="card__image" src="images/variety-carolina-reaper.jpg" alt="" loading="lazy">
+                        <h3 class="card__title">Carolina Reaper</h3>
+                        <p class="card__species"><i lang="la">Capsicum chinense</i></p>
+                        <p class="card__text">Extrem scharf mit fruchtiger Süße am Anfang. Nur für Geübte und stets in winzigen Mengen.</p>
+                        <p class="card__heat">
+                            <label for="heat-carolina-reaper">Schärfe</label>
+                            <meter id="heat-carolina-reaper" min="1" max="5" value="5">5 von 5</meter>
+                        </p>
+                        <p class="badge">USA</p>
+                        <button class="card__button" type="button" aria-haspopup="dialog" data-dialog="dialog-carolina-reaper">Mehr erfahren<span class="visually-hidden"> zu Carolina Reaper</span></button>
+                    </article>
+                </li>
+            </ul>
+        </section>
     </main>
 
     <footer class="site-footer">
