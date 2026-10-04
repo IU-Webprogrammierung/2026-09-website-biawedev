@@ -124,6 +124,7 @@ Commits folgen dem Standard [Conventional Commits](https://www.conventionalcommi
 | `refactor:` | Umstrukturierung ohne Änderung der Funktion |
 | `docs:` | Dokumentation und Code-Kommentare |
 | `chore:` | Wartung, z. B. Bilder und Projektdateien |
+| `ci:` | Änderungen an der Deployment-Pipeline (GitHub Actions) |
 
 Der Abgabestand von Phase 1 ist mit dem Git-Tag `v1.0-konzept` markiert.
 
@@ -131,6 +132,9 @@ Der Abgabestand von Phase 1 ist mit dem Git-Tag `v1.0-konzept` markiert.
 
 ```text
 .
+├── .github/
+│   └── workflows/
+│       └── pages.yml        # Deployment auf GitHub Pages (GitHub Actions)
 ├── README.md                # Projektdokumentation
 └── src/
     ├── index.html           # Startseite
