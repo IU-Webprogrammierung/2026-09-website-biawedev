@@ -122,16 +122,30 @@
             <ul class="card-list">
                 <li>
                     <article class="card">
-                        <img class="card__image" src="images/variety-jalapeno.jpg" alt="" loading="lazy">
-                        <h3 class="card__title">Jalapeño</h3>
-                        <p class="card__species"><i lang="la">Capsicum annuum</i></p>
-                        <p class="card__text">Grün geerntet knackig-frisch, reif rot und leicht süßlich. Passt zu Nachos, Salsa und gefüllt in den Ofen.</p>
+                        <img class="card__image" src="images/variety-aji-amarillo.jpg" alt="" loading="lazy">
+                        <h3 class="card__title">Aji Amarillo</h3>
+                        <p class="card__species"><i lang="la">Capsicum baccatum</i></p>
+                        <p class="card__text">Fruchtig mit leichter Zitrusnote und mittlerer Schärfe. Die wichtigste Chili der peruanischen Küche, etwa für Ají-Sauce und Ceviche.</p>
                         <p class="card__heat">
-                            <label for="heat-jalapeno">Schärfe</label>
-                            <meter id="heat-jalapeno" min="1" max="5" value="2">2 von 5</meter>
+                            <label for="heat-aji-amarillo">Schärfe</label>
+                            <meter id="heat-aji-amarillo" min="1" max="5" value="3">3 von 5</meter>
                         </p>
-                        <p class="badge">Mexiko</p>
-                        <button class="card__button" type="button" aria-haspopup="dialog" data-dialog="dialog-jalapeno">Mehr erfahren<span class="visually-hidden"> zu Jalapeño</span></button>
+                        <p class="badge">Peru</p>
+                        <button class="card__button" type="button" aria-haspopup="dialog" data-dialog="dialog-aji-amarillo">Mehr erfahren<span class="visually-hidden"> zu Aji Amarillo</span></button>
+                    </article>
+                </li>
+                <li>
+                    <article class="card">
+                        <img class="card__image" src="images/variety-carolina-reaper.jpg" alt="" loading="lazy">
+                        <h3 class="card__title">Carolina Reaper</h3>
+                        <p class="card__species"><i lang="la">Capsicum chinense</i></p>
+                        <p class="card__text">Extrem scharf mit fruchtiger Süße am Anfang. Nur für Geübte und stets in winzigen Mengen.</p>
+                        <p class="card__heat">
+                            <label for="heat-carolina-reaper">Schärfe</label>
+                            <meter id="heat-carolina-reaper" min="1" max="5" value="5">5 von 5</meter>
+                        </p>
+                        <p class="badge">USA</p>
+                        <button class="card__button" type="button" aria-haspopup="dialog" data-dialog="dialog-carolina-reaper">Mehr erfahren<span class="visually-hidden"> zu Carolina Reaper</span></button>
                     </article>
                 </li>
                 <li>
@@ -164,59 +178,71 @@
                 </li>
                 <li>
                     <article class="card">
-                        <img class="card__image" src="images/variety-aji-amarillo.jpg" alt="" loading="lazy">
-                        <h3 class="card__title">Aji Amarillo</h3>
-                        <p class="card__species"><i lang="la">Capsicum baccatum</i></p>
-                        <p class="card__text">Fruchtig mit leichter Zitrusnote und mittlerer Schärfe. Die wichtigste Chili der peruanischen Küche, etwa für Ají-Sauce und Ceviche.</p>
+                        <img class="card__image" src="images/variety-jalapeno.jpg" alt="" loading="lazy">
+                        <h3 class="card__title">Jalapeño</h3>
+                        <p class="card__species"><i lang="la">Capsicum annuum</i></p>
+                        <p class="card__text">Grün geerntet knackig-frisch, reif rot und leicht süßlich. Passt zu Nachos, Salsa und gefüllt in den Ofen.</p>
                         <p class="card__heat">
-                            <label for="heat-aji-amarillo">Schärfe</label>
-                            <meter id="heat-aji-amarillo" min="1" max="5" value="3">3 von 5</meter>
+                            <label for="heat-jalapeno">Schärfe</label>
+                            <meter id="heat-jalapeno" min="1" max="5" value="2">2 von 5</meter>
                         </p>
-                        <p class="badge">Peru</p>
-                        <button class="card__button" type="button" aria-haspopup="dialog" data-dialog="dialog-aji-amarillo">Mehr erfahren<span class="visually-hidden"> zu Aji Amarillo</span></button>
-                    </article>
-                </li>
-                <li>
-                    <article class="card">
-                        <img class="card__image" src="images/variety-carolina-reaper.jpg" alt="" loading="lazy">
-                        <h3 class="card__title">Carolina Reaper</h3>
-                        <p class="card__species"><i lang="la">Capsicum chinense</i></p>
-                        <p class="card__text">Extrem scharf mit fruchtiger Süße am Anfang. Nur für Geübte und stets in winzigen Mengen.</p>
-                        <p class="card__heat">
-                            <label for="heat-carolina-reaper">Schärfe</label>
-                            <meter id="heat-carolina-reaper" min="1" max="5" value="5">5 von 5</meter>
-                        </p>
-                        <p class="badge">USA</p>
-                        <button class="card__button" type="button" aria-haspopup="dialog" data-dialog="dialog-carolina-reaper">Mehr erfahren<span class="visually-hidden"> zu Carolina Reaper</span></button>
+                        <p class="badge">Mexiko</p>
+                        <button class="card__button" type="button" aria-haspopup="dialog" data-dialog="dialog-jalapeno">Mehr erfahren<span class="visually-hidden"> zu Jalapeño</span></button>
                     </article>
                 </li>
             </ul>
         </section>
 
         <!-- Modals: variety profiles, opened by the buttons with data-dialog -->
-        <dialog id="dialog-jalapeno" aria-labelledby="dialog-jalapeno-title">
+        <dialog id="dialog-aji-amarillo" aria-labelledby="dialog-aji-amarillo-title">
             <article class="dialog__content">
                 <header class="dialog__header">
-                    <h2 id="dialog-jalapeno-title">Jalapeño</h2>
+                    <h2 id="dialog-aji-amarillo-title">Aji Amarillo</h2>
                     <form method="dialog">
                         <button class="dialog__close" type="submit">Schließen</button>
                     </form>
                 </header>
-                <p>Die Jalapeño ist die bekannteste mexikanische Chili und ein guter Einstieg: kräftiges Aroma, aber nur moderate Schärfe. Meist wird sie grün geerntet, dann schmeckt sie knackig und frisch. Voll ausgereift färbt sie sich rot und wird süßlicher.</p>
+                <p>„Amarillo“ heißt auf Spanisch „gelb“, obwohl die Schoten reif eher orange leuchten. Die Aji Amarillo ist die wichtigste Chili der peruanischen Küche. Sie schmeckt fruchtig mit leichter Zitrusnote und hat eine angenehm mittlere Schärfe.</p>
                 <dl>
                     <dt>Art</dt>
-                    <dd><i lang="la">Capsicum annuum</i></dd>
+                    <dd><i lang="la">Capsicum baccatum</i></dd>
                     <dt>Herkunft</dt>
-                    <dd>Mexiko</dd>
+                    <dd>Peru</dd>
                     <dt>Schärfe</dt>
-                    <dd>2 von 5, etwa 2.500 bis 8.000 SHU</dd>
+                    <dd>3 von 5, etwa 30.000 bis 50.000 SHU</dd>
                     <dt>Wuchs</dt>
-                    <dd>Buschig, etwa 60 bis 90 cm hoch</dd>
+                    <dd>Hoch, bis etwa 150 cm</dd>
                     <dt>Verwendung</dt>
-                    <dd>Nachos, Salsa, gefüllt und überbacken</dd>
+                    <dd>Ají-Sauce, Ceviche, Pasten, Fischgerichte</dd>
                 </dl>
                 <h3>Anbautipp</h3>
-                <p>Jalapeños sind robust und tragen früh und reichlich. Sie kommen auch mit Balkon und größeren Kübeln gut zurecht und verzeihen kleine Pflegefehler.</p>
+                <p>Die Pflanze wird groß und braucht einen geräumigen Topf sowie eine Stütze. Sie trägt ihre Früchte erst spät im Jahr, ein sonniger und warmer Platz lohnt sich daher besonders.</p>
+            </article>
+        </dialog>
+
+        <dialog id="dialog-carolina-reaper" aria-labelledby="dialog-carolina-reaper-title">
+            <article class="dialog__content">
+                <header class="dialog__header">
+                    <h2 id="dialog-carolina-reaper-title">Carolina Reaper</h2>
+                    <form method="dialog">
+                        <button class="dialog__close" type="submit">Schließen</button>
+                    </form>
+                </header>
+                <p>Die Carolina Reaper wurde in den USA gezüchtet und war lange die schärfste Chili der Welt. Ihre knubbeligen roten Schoten mit spitzem Schwanz schmecken zuerst fruchtig-süß, dann folgt eine extreme, lang anhaltende Schärfe.</p>
+                <dl>
+                    <dt>Art</dt>
+                    <dd><i lang="la">Capsicum chinense</i></dd>
+                    <dt>Herkunft</dt>
+                    <dd>USA (South Carolina), Züchtung</dd>
+                    <dt>Schärfe</dt>
+                    <dd>5 von 5, durchschnittlich über 1.500.000 SHU</dd>
+                    <dt>Wuchs</dt>
+                    <dd>Kräftig, etwa 90 bis 120 cm hoch</dd>
+                    <dt>Verwendung</dt>
+                    <dd>Nur in winzigen Mengen, etwa für Extrem-Saucen</dd>
+                </dl>
+                <h3>Sicherheitshinweis</h3>
+                <p>Beim Verarbeiten immer Handschuhe tragen, nicht ins Gesicht fassen und die Schoten außer Reichweite von Kindern aufbewahren. Die Reaper ist nichts für Einsteiger.</p>
             </article>
         </dialog>
 
@@ -272,55 +298,29 @@
             </article>
         </dialog>
 
-        <dialog id="dialog-aji-amarillo" aria-labelledby="dialog-aji-amarillo-title">
+        <dialog id="dialog-jalapeno" aria-labelledby="dialog-jalapeno-title">
             <article class="dialog__content">
                 <header class="dialog__header">
-                    <h2 id="dialog-aji-amarillo-title">Aji Amarillo</h2>
+                    <h2 id="dialog-jalapeno-title">Jalapeño</h2>
                     <form method="dialog">
                         <button class="dialog__close" type="submit">Schließen</button>
                     </form>
                 </header>
-                <p>„Amarillo“ heißt auf Spanisch „gelb“, obwohl die Schoten reif eher orange leuchten. Die Aji Amarillo ist die wichtigste Chili der peruanischen Küche. Sie schmeckt fruchtig mit leichter Zitrusnote und hat eine angenehm mittlere Schärfe.</p>
+                <p>Die Jalapeño ist die bekannteste mexikanische Chili und ein guter Einstieg: kräftiges Aroma, aber nur moderate Schärfe. Meist wird sie grün geerntet, dann schmeckt sie knackig und frisch. Voll ausgereift färbt sie sich rot und wird süßlicher.</p>
                 <dl>
                     <dt>Art</dt>
-                    <dd><i lang="la">Capsicum baccatum</i></dd>
+                    <dd><i lang="la">Capsicum annuum</i></dd>
                     <dt>Herkunft</dt>
-                    <dd>Peru</dd>
+                    <dd>Mexiko</dd>
                     <dt>Schärfe</dt>
-                    <dd>3 von 5, etwa 30.000 bis 50.000 SHU</dd>
+                    <dd>2 von 5, etwa 2.500 bis 8.000 SHU</dd>
                     <dt>Wuchs</dt>
-                    <dd>Hoch, bis etwa 150 cm</dd>
+                    <dd>Buschig, etwa 60 bis 90 cm hoch</dd>
                     <dt>Verwendung</dt>
-                    <dd>Ají-Sauce, Ceviche, Pasten, Fischgerichte</dd>
+                    <dd>Nachos, Salsa, gefüllt und überbacken</dd>
                 </dl>
                 <h3>Anbautipp</h3>
-                <p>Die Pflanze wird groß und braucht einen geräumigen Topf sowie eine Stütze. Sie trägt ihre Früchte erst spät im Jahr, ein sonniger und warmer Platz lohnt sich daher besonders.</p>
-            </article>
-        </dialog>
-
-        <dialog id="dialog-carolina-reaper" aria-labelledby="dialog-carolina-reaper-title">
-            <article class="dialog__content">
-                <header class="dialog__header">
-                    <h2 id="dialog-carolina-reaper-title">Carolina Reaper</h2>
-                    <form method="dialog">
-                        <button class="dialog__close" type="submit">Schließen</button>
-                    </form>
-                </header>
-                <p>Die Carolina Reaper wurde in den USA gezüchtet und war lange die schärfste Chili der Welt. Ihre knubbeligen roten Schoten mit spitzem Schwanz schmecken zuerst fruchtig-süß, dann folgt eine extreme, lang anhaltende Schärfe.</p>
-                <dl>
-                    <dt>Art</dt>
-                    <dd><i lang="la">Capsicum chinense</i></dd>
-                    <dt>Herkunft</dt>
-                    <dd>USA (South Carolina), Züchtung</dd>
-                    <dt>Schärfe</dt>
-                    <dd>5 von 5, durchschnittlich über 1.500.000 SHU</dd>
-                    <dt>Wuchs</dt>
-                    <dd>Kräftig, etwa 90 bis 120 cm hoch</dd>
-                    <dt>Verwendung</dt>
-                    <dd>Nur in winzigen Mengen, etwa für Extrem-Saucen</dd>
-                </dl>
-                <h3>Sicherheitshinweis</h3>
-                <p>Beim Verarbeiten immer Handschuhe tragen, nicht ins Gesicht fassen und die Schoten außer Reichweite von Kindern aufbewahren. Die Reaper ist nichts für Einsteiger.</p>
+                <p>Jalapeños sind robust und tragen früh und reichlich. Sie kommen auch mit Balkon und größeren Kübeln gut zurecht und verzeihen kleine Pflegefehler.</p>
             </article>
         </dialog>
     </main>
