@@ -26,6 +26,7 @@ Barrierefreiheit nach WCAG 2.1 und WAI-ARIA.
 - [Responsive Design & Breakpoint-Konzept](#responsive-design--breakpoint-konzept)
 - [Git-Workflow](#git-workflow)
 - [Repository-Struktur](#repository-struktur)
+- [Bildnachweise](#bildnachweise)
 - [Autor](#autor)
 
 ## Entwicklungsstand (Phase 1)
@@ -151,6 +152,49 @@ Der Abgabestand von Phase 1 ist mit dem Git-Tag `v1.0-konzept` markiert.
     │   └── script.js        # Skript (Phase 2)
     └── images/              # Logo, Fotos und 404-Illustration
 ```
+
+## Bildnachweise
+
+### Eigene Fotos
+
+Diese Fotos habe ich selbst aufgenommen:
+`growing-sowing.jpg`, `harvest-flakes.jpg`.
+
+### Fotos von Pexels und Unsplash
+
+Die folgenden Fotos stammen von [Pexels](https://www.pexels.com/de-de/lizenz/) bzw.
+[Unsplash](https://unsplash.com/de/lizenz) und stehen unter der jeweiligen Lizenz
+(kostenlose Nutzung, keine Namensnennung erforderlich).
+Sie wurden auf 800 × 600 px (4:3) zugeschnitten, das Hero-Bild zusätzlich auf
+1600 × 1200 px.
+
+| Datei | Foto | Fotograf/in | Quelle |
+|---|---|---|---|
+| `hero-chilis.jpg` (inkl. `hero-chilis-800.jpg`) | [Selektive Fokusfotografie von roten Chilis](https://unsplash.com/photos/jri16E_lTl0) | Nick Artman | Unsplash |
+| `harvest-fresh.jpg` | [Red Chili Peppers on a Bowl](https://www.pexels.com/photo/8365793/) | Ahsanjaya | Pexels |
+| `harvest-drying.jpg` | [Row of Red Chili Peppers Hanging on a String](https://www.pexels.com/photo/5320086/) | Roman Odintsov | Pexels |
+| `harvest-powder.jpg` | [Rotes Chili auf Klarglasschale](https://unsplash.com/photos/ul3G99O5oIA) | Towfiqu barbhuiya | Unsplash |
+| `harvest-oil.jpg` | [Indonesian spicy chili oil with garlic](https://www.pexels.com/photo/36453286/) | Candra Bagus | Pexels |
+| `harvest-hot-sauce.jpg` | [Glas mit roter Soße neben einer Schale Chilischoten](https://unsplash.com/photos/iNAxJX8rCNU) | Monika Borys | Unsplash |
+| `growing-germination.jpg` | [Young sprouts growing in seed trays outdoors](https://www.pexels.com/photo/113335/) | Markus Spiske | Pexels |
+| `growing-repotting.jpg` | [Seedling in a small black pot](https://unsplash.com/photos/6Tu1SzspgJ4) | Jonathan Kemper | Unsplash |
+| `growing-planting-out.jpg` | [Green Plants Growing on Good Soil](https://www.pexels.com/photo/13533594/) | Mateusz Feliksik | Pexels |
+| `growing-flowering.jpg` | [Pepper plant with white flowers](https://unsplash.com/photos/kZT8-l5mr0E) | Lhar Capili | Unsplash |
+| `growing-overwintering.jpg` | [Red Chili Peppers](https://www.pexels.com/photo/3208324/) | Krisztina Papp | Pexels |
+| `variety-jalapeno.jpg` | [Close-up of Vibrant Fresh Jalapeños at Market](https://www.pexels.com/photo/36033282/) | Tim Mossholder | Pexels |
+| `variety-cayenne.jpg` | [Rote und grüne Jalapeno-Chilis](https://unsplash.com/photos/L2xhGmPmMNs) | Steve A Johnson | Unsplash |
+| `variety-habanero.jpg` | [Abundance of Peppers](https://www.pexels.com/photo/19029815/) | Terrance Barksdale | Pexels |
+| `variety-carolina-reaper.jpg` | [Bunch of Red Chili Peppers in Close Up Photography](https://www.pexels.com/photo/13400207/) | Anyasez | Pexels |
+
+### Fotos unter Creative-Commons-Lizenz
+
+Diese Fotos stammen von [Wikimedia Commons](https://commons.wikimedia.org/) und dürfen
+nur mit Namensnennung und Angabe der Lizenz verwendet werden.
+Sie wurden auf 800 × 600 px (4:3) zugeschnitten und verkleinert.
+
+| Datei | Foto | Urheber/in | Lizenz |
+|---|---|---|---|
+| `variety-aji-amarillo.jpg` | [Aji amarillo flickr](https://commons.wikimedia.org/wiki/File:Aji_amarillo_flickr.jpg) | Marianne Serra | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) |
 
 ## Autor
 
