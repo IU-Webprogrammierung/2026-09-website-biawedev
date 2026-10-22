@@ -33,10 +33,10 @@ Barrierefreiheit nach WCAG 2.1 und WAI-ARIA.
 
 - **HTML5:** Alle 8 Seiten sind als semantisches HTML mit ihren Inhalten angelegt,
   einschließlich der Detail-Fenster zu Anbauphasen, Sorten und Verarbeitungsmethoden.
-- **CSS:** `src/css/style.css` ist angelegt, aber noch leer. Die Klassen im HTML folgen
+- **CSS:** `css/style.css` ist angelegt, aber noch leer. Die Klassen im HTML folgen
   bereits der BEM-Namenskonvention (z. B. `card__title`, `site-nav__link`,
   `button--primary`), sodass das Styling in Phase 2 direkt darauf aufsetzen kann.
-- **JavaScript:** `src/js/script.js` ist angelegt, aber noch leer. Im HTML sind die
+- **JavaScript:** `js/script.js` ist angelegt, aber noch leer. Im HTML sind die
   Bedienelemente vorbereitet: der Theme-Umschalter (`<button class="theme-toggle">`)
   und die Buttons, die über `data-dialog` ihr Detail-Fenster referenzieren.
 - **Versionskontrolle:** Git und GitHub mit Commits nach Conventional Commits.
@@ -136,21 +136,20 @@ Der Abgabestand von Phase 1 ist mit dem Git-Tag `v1.0-konzept` markiert.
 ├── .github/
 │   └── workflows/
 │       └── pages.yml        # Deployment auf GitHub Pages (GitHub Actions)
-├── README.md                # Projektdokumentation
-└── src/
-    ├── index.html           # Startseite
-    ├── growing.html         # Anbau
-    ├── varieties.html       # Chilisorten
-    ├── harvest.html         # Ernte & Verarbeitung
-    ├── about.html           # Über mich / Kontakt
-    ├── impressum.html       # Impressum
-    ├── datenschutz.html     # Datenschutzerklärung
-    ├── 404.html             # Fehlerseite
-    ├── css/
-    │   └── style.css        # Stylesheet (Phase 2)
-    ├── js/
-    │   └── script.js        # Skript (Phase 2)
-    └── images/              # Logo, Fotos und 404-Illustration
+├── index.html               # Startseite
+├── growing.html             # Anbau
+├── varieties.html           # Chilisorten
+├── harvest.html             # Ernte & Verarbeitung
+├── about.html               # Über mich / Kontakt
+├── impressum.html           # Impressum
+├── datenschutz.html         # Datenschutzerklärung
+├── 404.html                 # Fehlerseite
+├── css/
+│   └── style.css            # Stylesheet (Phase 2)
+├── js/
+│   └── script.js            # Skript (Phase 2)
+├── images/                  # Logo, Fotos und 404-Illustration
+└── README.md                # Projektdokumentation
 ```
 
 ## Bildnachweise
