@@ -99,3 +99,16 @@ a {
 .skip-link:focus {
     transform: none;
 }
+
+/* ==========================================================================
+   3. Layout
+   ========================================================================== */
+
+/* Centered content column: grows up to 1200px, wider screens only get wider
+   margins. Header and footer backgrounds stay full width, only their inner
+   wrapper uses the container. */
+.container {
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding-inline: var(--space-m);
+}
