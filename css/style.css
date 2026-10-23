@@ -12,6 +12,7 @@
     --color-link: var(--color-primary);
     --color-on-primary: #FFFFFF;    /* text on red backgrounds (5.6:1) */
     --color-on-accent: #2B2118;     /* text/icons on orange, same in both themes */
+    --color-border: #E6DCC6;        /* thin dividers, decoration only */
     --color-focus: #2B2118;
 
     /* Typography */
@@ -40,6 +41,7 @@
     --color-surface: #2A2420;
     --color-text: #F5EEDC;
     --color-on-primary: #1E1A17;    /* white on light red would be too weak */
+    --color-border: #4A403A;
     --color-focus: #F5EEDC;
 
     color-scheme: dark;
@@ -308,5 +310,98 @@ a {
     /* Current page: underline instead of the side bar */
     .site-nav__link[aria-current="page"] {
         box-shadow: inset 0 -3px 0 var(--color-primary);
+    }
+}
+
+/* --- Footer ------------------------------------------------------------- */
+
+/* Mobile and tablet (< 1200px): two columns "Seiten | Rechtliches",
+   copyright below across both columns */
+.site-footer {
+    margin-top: var(--space-xl);
+    background-color: var(--color-surface);
+    border-top: 4px solid var(--color-primary);
+}
+
+.site-footer__inner {
+    display: grid;
+    grid-template-columns: 1.35fr 1fr;  /* page names are longer than the legal links */
+    gap: var(--space-m) var(--space-l);
+    padding-block: var(--space-l) var(--space-m);
+}
+
+.site-footer__heading {
+    margin: 0 0 var(--space-s);
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.site-footer__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-s);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.site-footer__link {
+    color: var(--color-text);
+    text-decoration: none;
+}
+
+.site-footer__link:hover {
+    color: var(--color-primary);
+    text-decoration: underline;
+}
+
+/* Current page: color, bold and underline, not marked by color alone */
+.site-footer__link[aria-current="page"] {
+    font-weight: 700;
+    color: var(--color-primary);
+    text-decoration: underline;
+}
+
+.site-footer__copyright {
+    grid-column: 1 / -1;
+    margin: 0;
+    padding-top: var(--space-m);
+    font-size: 0.875rem;
+    text-align: center;
+    border-top: 1px solid var(--color-border);
+}
+
+/* Desktop (≥ 1200px): one row, copyright left, all links right */
+@media (min-width: 1200px) {
+    .site-footer__inner {
+        display: flex;
+        align-items: center;
+        gap: var(--space-l);
+        padding-block: var(--space-m);
+    }
+
+    .site-footer__copyright {
+        order: -1;
+        margin-right: auto;
+        padding-top: 0;
+        border-top: 0;
+    }
+
+    /* Headings are hidden visually but stay for screen readers,
+       they still name both navigation landmarks */
+    .site-footer__heading {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        margin: 0;
+        overflow: hidden;
+        clip-path: inset(50%);
+        white-space: nowrap;
+    }
+
+    .site-footer__list {
+        flex-direction: row;
+        gap: var(--space-m);
     }
 }
