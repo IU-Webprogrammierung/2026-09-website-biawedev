@@ -66,6 +66,9 @@ h2,
 h3 {
     font-family: var(--font-heading);
     line-height: 1.2;
+    /* Long German words ("Datenschutzerklärung") would overflow at 360px */
+    hyphens: auto;
+    overflow-wrap: break-word;
 }
 
 img {
