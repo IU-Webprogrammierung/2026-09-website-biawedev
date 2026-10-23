@@ -77,3 +77,25 @@ img {
 a {
     color: var(--color-link);
 }
+
+/* Visible focus for keyboard users only (WCAG 2.4.7) */
+:focus-visible {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 2px;
+}
+
+/* Skip link: hidden above the viewport, slides in on keyboard focus */
+.skip-link {
+    position: absolute;
+    top: var(--space-s);
+    left: var(--space-s);
+    z-index: 100;
+    padding: var(--space-s) var(--space-m);
+    color: var(--color-on-primary);
+    background-color: var(--color-primary);
+    transform: translateY(-200%);
+}
+
+.skip-link:focus {
+    transform: none;
+}
