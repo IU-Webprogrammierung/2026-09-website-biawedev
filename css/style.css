@@ -1,0 +1,45 @@
+/* ==========================================================================
+   1. Variables
+   ========================================================================== */
+:root {
+    /* Colors */
+    --color-primary: #C62828;       /* chili red (5.3:1) */
+    --color-secondary: #2E7D32;     /* dark green (4.8:1) */
+    --color-accent: #FF9800;        /* orange (2:1) – decoration only, never text */
+    --color-bg: #FFF8E1;            /* light beige */
+    --color-surface: #FFFFFF;       /* cards, dialogs */
+    --color-text: #2B2118;          /* (14.8:1) */
+    --color-link: var(--color-primary);
+    --color-on-primary: #FFFFFF;    /* text on red backgrounds (5.6:1) */
+    --color-focus: #2B2118;
+
+    /* Typography */
+    --font-heading: "Montserrat", "Poppins", system-ui, sans-serif;
+    --font-body: "Open Sans", "Roboto", system-ui, sans-serif;
+
+    /* Spacing scale */
+    --space-xs: 0.25rem;
+    --space-s: 0.5rem;
+    --space-m: 1rem;
+    --space-l: 2rem;
+    --space-xl: 4rem;
+
+    --container-max: 1200px;
+
+    /* Native form controls and scrollbars in matching colors */
+    color-scheme: light;
+}
+
+/* Dark mode: set by the theme switch as <html data-theme="dark"> */
+[data-theme="dark"] {
+    --color-primary: #F26663;       /* lighter red, (5.6:1) on dark background */
+    --color-secondary: #81C784;
+    --color-accent: #FFB74D;
+    --color-bg: #1E1A17;
+    --color-surface: #2A2420;
+    --color-text: #F5EEDC;
+    --color-on-primary: #1E1A17;    /* white on light red would be too weak */
+    --color-focus: #F5EEDC;
+
+    color-scheme: dark;
+}
