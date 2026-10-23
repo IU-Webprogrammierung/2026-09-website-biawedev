@@ -21,3 +21,38 @@ document.addEventListener('keydown', event => {
         openButton.focus();
     }
 });
+
+// Theme switch: <html data-theme> holds the theme (set early by theme.js),
+// the button only mirrors it with aria-pressed, which CSS uses for the knob
+function setTheme(theme) {
+    document.documentElement.dataset.theme = theme;
+
+    try {
+        localStorage.setItem('theme', theme);
+    } catch (error) {
+        // Storage blocked: the theme still changes, but is not remembered
+    }
+
+    syncThemeToggle();
+}
+
+function syncThemeToggle() {
+    const button = document.querySelector('.theme-toggle');
+    if (button) {
+        const isDark = document.documentElement.dataset.theme === 'dark';
+        button.setAttribute('aria-pressed', String(isDark));
+    }
+}
+
+document.addEventListener('click', event => {
+    if (!event.target.closest('.theme-toggle')) {
+        return;
+    }
+
+    const isDark = document.documentElement.dataset.theme === 'dark';
+    setTheme(isDark ? 'light' : 'dark');
+});
+
+// The header only exists after loader.js has fetched it, then the button
+// gets the state of the theme that theme.js already applied
+document.addEventListener('componentloaded', syncThemeToggle);

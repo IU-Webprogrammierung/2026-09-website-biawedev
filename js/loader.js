@@ -16,6 +16,8 @@ function loadComponent(selector, path) {
         .then(html => {
             target.innerHTML = html;
             markCurrentPage(target);
+            // Tells other scripts (script.js) that the component is now in the DOM
+            target.dispatchEvent(new CustomEvent('componentloaded', { bubbles: true }));
         })
         .catch(error => console.error(error));
 }
