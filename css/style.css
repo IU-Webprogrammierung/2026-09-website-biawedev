@@ -285,3 +285,28 @@ a {
     color: var(--color-primary);
     box-shadow: inset 4px 0 0 var(--color-primary);
 }
+
+/* Desktop (≥ 1200px): the navigation is always visible as a bar between logo
+   and theme switch, the menu button is no longer needed */
+@media (min-width: 1200px) {
+    .menu-toggle {
+        display: none;
+    }
+
+    .site-nav {
+        display: block;
+        flex-basis: auto;
+        order: 0;
+    }
+
+    .site-nav__list {
+        display: flex;
+        gap: var(--space-xs);
+        padding: 0;
+    }
+
+    /* Current page: underline instead of the side bar */
+    .site-nav__link[aria-current="page"] {
+        box-shadow: inset 0 -3px 0 var(--color-primary);
+    }
+}
