@@ -521,3 +521,50 @@ a {
         margin: 0;
     }
 }
+
+/* --- Home: history ------------------------------------------------------ */
+
+.history {
+    padding-bottom: var(--space-xl);
+}
+
+.history h2 {
+    margin-top: 0;
+}
+
+/* Same reading width as in the hero */
+.history > p {
+    max-width: 70ch;
+}
+
+/* Mobile and tablet (< 1200px): vertical timeline, the left border is the
+   line, each year sits on it as a red badge */
+.history__timeline {
+    margin-block: var(--space-l);
+    margin-left: var(--space-s);
+    padding: 0 0 0 var(--space-l);
+    list-style: none;
+    border-left: 2px solid var(--color-secondary);
+}
+
+.history__item + .history__item {
+    margin-top: var(--space-l);
+}
+
+/* Year badge: pulled back over the line so it starts just left of it.
+   The ring in the background color cuts the line around the badge */
+.history__title {
+    display: inline-block;
+    margin: 0 0 var(--space-s) calc(-1 * var(--space-l) - var(--space-s));
+    padding: var(--space-xs) 0.75rem;
+    font-size: 1rem;
+    color: var(--color-on-primary);
+    background-color: var(--color-primary);
+    border-radius: 1rem;
+    box-shadow: 0 0 0 3px var(--color-bg);
+}
+
+.history__item p {
+    max-width: 70ch;
+    margin: 0;
+}
