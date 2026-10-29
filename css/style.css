@@ -553,6 +553,39 @@ main > h1 ~ section {
     margin-block: 0 var(--space-s);
 }
 
+/* Heat bar in chili red on a light track (red vs. track at least 3:1, so the
+   filled part is visible as a graphic, WCAG 1.4.11). Chrome/Safari and
+   Firefox each style the bar with their own pseudo-elements */
+.card__heat meter {
+    width: 6rem;
+    height: 0.75rem;
+    background: var(--color-border);
+    border: 0;
+    border-radius: 0.375rem;
+    appearance: none;
+}
+
+.card__heat meter::-webkit-meter-bar {
+    height: 0.75rem;
+    background: var(--color-border);
+    border: 0;
+    border-radius: 0.375rem;
+}
+
+/* Without low/high/optimum in the HTML Chrome picks one of these three
+   states, all of them get the same red */
+.card__heat meter::-webkit-meter-optimum-value,
+.card__heat meter::-webkit-meter-suboptimum-value,
+.card__heat meter::-webkit-meter-even-less-good-value {
+    background: var(--color-primary);
+    border-radius: 0.375rem;
+}
+
+.card__heat meter::-moz-meter-bar {
+    background: var(--color-primary);
+    border-radius: 0.375rem;
+}
+
 /* Origin of a variety as a small label */
 .badge {
     width: fit-content;
@@ -680,18 +713,21 @@ body:has(dialog[open]) {
     font-size: 1.125rem;
 }
 
-/* Variety profile: term and value side by side */
-.dialog__content dl {
+/* Profiles (variety dialogs, chili species): term and value side by side */
+.dialog__content dl,
+.species__item dl {
     display: grid;
     grid-template-columns: max-content 1fr;
     gap: var(--space-xs) var(--space-m);
 }
 
-.dialog__content dt {
+.dialog__content dt,
+.species__item dt {
     font-weight: 600;
 }
 
-.dialog__content dd {
+.dialog__content dd,
+.species__item dd {
     margin: 0;
 }
 
@@ -906,5 +942,103 @@ body:has(dialog[open]) {
 @media (min-width: 768px) {
     .care-list {
         grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* --- Varieties: chili species ------------------------------------------- */
+
+/* Mobile and tablet (< 1200px): accordion, one <details> per species */
+.species__item {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+}
+
+.species__item + .species__item {
+    margin-top: var(--space-s);
+}
+
+/* The whole title row is the toggle, at least 44px high */
+.species__item summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-m);
+    min-height: 2.75rem;
+    padding: var(--space-s) var(--space-m);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    list-style: none;
+    cursor: pointer;
+}
+
+/* Hide the default triangle (Safari still uses this pseudo-element) */
+.species__item summary::-webkit-details-marker {
+    display: none;
+}
+
+/* Own marker: a chevron drawn with two borders, it points down when closed
+   and turns up when open. Empty content, so screen readers ignore it */
+.species__item summary::after {
+    content: "";
+    flex-shrink: 0;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(45deg);
+    transition: transform 0.2s ease;
+}
+
+.species__item[open] summary::after {
+    transform: rotate(-135deg);
+}
+
+.species__item summary:hover {
+    color: var(--color-primary);
+}
+
+.species__item dl {
+    margin: 0;
+    padding: 0 var(--space-m) var(--space-m);
+}
+
+/* Desktop (≥ 1200px): five cards side by side, all open (script.js sets
+   "open" and keeps the titles from closing them) */
+@media (min-width: 1200px) {
+    .species {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: var(--space-m);
+    }
+
+    .species h2 {
+        grid-column: 1 / -1;
+    }
+
+    .species__item + .species__item {
+        margin-top: 0;
+    }
+
+    .species__item summary {
+        cursor: default;
+    }
+
+    .species__item summary::after {
+        display: none;
+    }
+
+    .species__item summary:hover {
+        color: inherit;
+    }
+
+    /* About 200px per card: term above value */
+    .species__item dl {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .species__item dd + dt {
+        margin-top: var(--space-s);
     }
 }

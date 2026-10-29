@@ -80,3 +80,25 @@ document.addEventListener('click', event => {
         event.target.close();
     }
 });
+
+// Chili species (Sorten): accordion below 1200px, five open cards from
+// 1200px. matchMedia uses the same breakpoint as style.css and reports
+// when the window crosses it
+const desktopQuery = window.matchMedia('(min-width: 1200px)');
+
+function syncSpecies() {
+    document.querySelectorAll('.species__item').forEach(item => {
+        item.open = desktopQuery.matches;
+    });
+}
+
+desktopQuery.addEventListener('change', syncSpecies);
+syncSpecies();
+
+// On the desktop the cards stay open: a click (or Enter/Space) on the title
+// must not close them
+document.addEventListener('click', event => {
+    if (desktopQuery.matches && event.target.closest('.species__item > summary')) {
+        event.preventDefault();
+    }
+});
