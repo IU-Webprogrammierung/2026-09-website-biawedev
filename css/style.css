@@ -1229,3 +1229,67 @@ main > .legal-section {
 .legal-section address {
     font-style: normal;
 }
+
+/* --- 404 page ------------------------------------------------------------ */
+
+/* Mobile and tablet (< 1200px): one centered column, illustration on top.
+   In the HTML the image comes after the text; it is decorative (alt=""),
+   so moving it up with order does not change what screen readers read */
+.error-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-l);
+    padding-top: var(--space-l);
+    text-align: center;
+}
+
+.error-page__image {
+    order: -1;
+    width: min(60%, 14rem);
+}
+
+.error-page__code {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: var(--color-primary);
+}
+
+.error-page h1 {
+    margin-block: var(--space-xs) var(--space-m);
+}
+
+.error-page__text {
+    max-width: 50ch;
+    margin-inline: auto;
+}
+
+.error-page__actions {
+    justify-content: center;
+}
+
+/* Desktop (≥ 1200px): two columns like the hero, text left, seedling right */
+@media (min-width: 1200px) {
+    .error-page {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        text-align: left;
+    }
+
+    .error-page__image {
+        order: 0;
+        justify-self: center;
+        width: 20rem;
+    }
+
+    .error-page__text {
+        margin-inline: 0;
+    }
+
+    .error-page__actions {
+        justify-content: flex-start;
+    }
+}
