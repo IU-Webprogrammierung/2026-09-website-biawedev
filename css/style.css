@@ -74,6 +74,12 @@ h3 {
     overflow-wrap: break-word;
 }
 
+/* Fluid size on every page: 28px at 360px, grows with the viewport up to
+   44px */
+h1 {
+    font-size: clamp(1.75rem, 1.2rem + 2.5vw, 2.75rem);
+}
+
 img {
     display: block;
     max-width: 100%;
@@ -131,6 +137,29 @@ a {
     max-width: var(--container-max);
     margin-inline: auto;
     padding-inline: var(--space-m);
+}
+
+/* Page rhythm: space before the footer on every page */
+main {
+    padding-bottom: var(--space-xl);
+}
+
+/* Content pages (Anbau, Sorten, Ernte, Über mich, Rechtliches) start with
+   an h1 and intro text directly in <main> */
+main > h1 {
+    margin-block: var(--space-l) var(--space-m);
+}
+
+/* Lines of about 70 characters stay easy to read */
+main > p {
+    max-width: 70ch;
+}
+
+/* Clear gap between the sections that follow the page heading. The home
+   page has no h1 directly in <main>, its hero and history keep their own
+   spacing */
+main > h1 ~ section {
+    margin-top: var(--space-xl);
 }
 
 /* ==========================================================================
@@ -482,13 +511,11 @@ a {
     padding-block: var(--space-l);
 }
 
-/* Fluid size: 28px at 360px, grows with the viewport up to 44px */
 .hero h1 {
     margin-top: 0;
-    font-size: clamp(1.75rem, 1.2rem + 2.5vw, 2.75rem);
 }
 
-/* Lines of about 70 characters stay easy to read on tablets */
+/* Same reading width as the intro text on the content pages */
 .hero__content p {
     max-width: 70ch;
 }
@@ -537,10 +564,6 @@ a {
 }
 
 /* --- Home: history ------------------------------------------------------ */
-
-.history {
-    padding-bottom: var(--space-xl);
-}
 
 .history h2 {
     margin-top: 0;
