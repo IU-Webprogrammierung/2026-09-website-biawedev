@@ -16,13 +16,17 @@
     <!-- Site header with logo and main navigation, content from components/header.html -->
     <header class="site-header" id="site-header"></header>
 
-    <main id="main-content" class="container">
+    <main id="main-content" class="container about-page">
         <h1>Über mich / Kontakt</h1>
 
         <!-- About me -->
         <section class="about" aria-labelledby="about-heading">
             <figure class="about__figure">
-                <img src="images/hero-chilis.jpg" alt="Rote Chilis an einer Pflanze">
+                <img src="images/hero-chilis.jpg"
+                     srcset="images/hero-chilis-800.jpg 800w, images/hero-chilis.jpg 1600w"
+                     sizes="(min-width: 1200px) 568px, 100vw"
+                     width="1600" height="1200"
+                     alt="Rote Chilis an einer Pflanze">
             </figure>
             <div class="about__content">
                 <h2 id="about-heading">Die Geschichte hinter der Chili-Welt</h2>
@@ -35,10 +39,10 @@
         <section class="contact-details" aria-labelledby="contact-details-heading">
             <h2 id="contact-details-heading">Kontakt-Details</h2>
             <p>Du erreichst mich über diese Kanäle:</p>
-            <ul class="contact-details__list">
-                <li><a href="mailto:julian.biebl@example.com">E-Mail</a></li>
-                <li><a href="https://www.instagram.com/">Instagram</a></li>
-                <li><a href="https://github.com/BiaweDev">GitHub</a></li>
+            <ul class="contact-details__list button-group">
+                <li><a class="button button--secondary" href="mailto:julian.biebl@iu-study.org">E-Mail</a></li>
+                <li><a class="button button--secondary" href="https://www.instagram.com/">Instagram</a></li>
+                <li><a class="button button--secondary" href="https://github.com/BiaweDev">GitHub</a></li>
             </ul>
         </section>
 
@@ -76,7 +80,7 @@
                     </label>
                 </div>
 
-                <button type="submit">Nachricht senden</button>
+                <button class="button button--primary" type="submit">Nachricht senden</button>
             </form>
         </section>
     </main>
