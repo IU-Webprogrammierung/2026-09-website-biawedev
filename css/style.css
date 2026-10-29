@@ -1,4 +1,30 @@
 /* ==========================================================================
+   0. Fonts
+   ========================================================================== */
+
+/* Self-hosted instead of loaded from Google: no visitor IP address goes to
+   a third party (GDPR). Both are variable fonts, one file covers all weights
+   in the given range; only the Latin character set (incl. German umlauts).
+   License: SIL Open Font License, see fonts/OFL-*.txt.
+   font-display: swap shows the fallback font at once and switches when the
+   file has loaded, so the text is never invisible */
+@font-face {
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 600 700;
+    font-display: swap;
+    src: url("../fonts/montserrat-latin.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 400 700;
+    font-display: swap;
+    src: url("../fonts/open-sans-latin.woff2") format("woff2");
+}
+
+/* ==========================================================================
    1. Variables
    ========================================================================== */
 :root {
