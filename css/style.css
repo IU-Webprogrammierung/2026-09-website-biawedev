@@ -553,6 +553,39 @@ main > h1 ~ section {
     margin-block: 0 var(--space-s);
 }
 
+/* Heat bar in chili red on a light track (red vs. track at least 3:1, so the
+   filled part is visible as a graphic, WCAG 1.4.11). Chrome/Safari and
+   Firefox each style the bar with their own pseudo-elements */
+.card__heat meter {
+    width: 6rem;
+    height: 0.75rem;
+    background: var(--color-border);
+    border: 0;
+    border-radius: 0.375rem;
+    appearance: none;
+}
+
+.card__heat meter::-webkit-meter-bar {
+    height: 0.75rem;
+    background: var(--color-border);
+    border: 0;
+    border-radius: 0.375rem;
+}
+
+/* Without low/high/optimum in the HTML Chrome picks one of these three
+   states, all of them get the same red */
+.card__heat meter::-webkit-meter-optimum-value,
+.card__heat meter::-webkit-meter-suboptimum-value,
+.card__heat meter::-webkit-meter-even-less-good-value {
+    background: var(--color-primary);
+    border-radius: 0.375rem;
+}
+
+.card__heat meter::-moz-meter-bar {
+    background: var(--color-primary);
+    border-radius: 0.375rem;
+}
+
 /* Origin of a variety as a small label */
 .badge {
     width: fit-content;
