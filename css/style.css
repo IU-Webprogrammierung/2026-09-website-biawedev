@@ -571,6 +571,34 @@ main > h1 ~ section {
     margin-bottom: var(--space-m);
 }
 
+/* Card grid (Anbau, Sorten, Ernte). Mobile (< 768px): one column */
+.card-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-l);
+    margin-block: var(--space-l);
+    padding: 0;
+    list-style: none;
+}
+
+/* Tablet (768–1199px): two columns */
+@media (min-width: 768px) {
+    .card-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Desktop (≥ 1200px): three columns, Sorten four (card-list--four) */
+@media (min-width: 1200px) {
+    .card-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .card-list--four {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
 /* ==========================================================================
    5. Pages
    ========================================================================== */
