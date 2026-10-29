@@ -56,3 +56,27 @@ document.addEventListener('click', event => {
 // The header only exists after loader.js has fetched it, then the button
 // gets the state of the theme that theme.js already applied
 document.addEventListener('componentloaded', syncThemeToggle);
+
+// Detail dialogs: each "Mehr erfahren" button names its dialog in
+// data-dialog. showModal() makes it a real modal: focus stays inside, the
+// page behind is inert, Esc and the close button work without extra code
+document.addEventListener('click', event => {
+    const button = event.target.closest('[data-dialog]');
+    if (!button) {
+        return;
+    }
+
+    const dialog = document.getElementById(button.dataset.dialog);
+    if (dialog) {
+        dialog.showModal();
+    }
+});
+
+// A click on the dimmed backdrop lands on the <dialog> element itself,
+// a click on the content lands on an element inside it (the dialog has no
+// padding, see style.css), so only the backdrop closes it
+document.addEventListener('click', event => {
+    if (event.target instanceof HTMLDialogElement) {
+        event.target.close();
+    }
+});
