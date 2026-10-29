@@ -463,6 +463,35 @@ a {
 
 /* --- Home: hero --------------------------------------------------------- */
 
+/* Mobile and tablet (< 1200px): text, buttons and image stacked */
+.hero {
+    padding-block: var(--space-l);
+}
+
+/* Fluid size: 28px at 360px, grows with the viewport up to 44px */
+.hero h1 {
+    margin-top: 0;
+    font-size: clamp(1.75rem, 1.2rem + 2.5vw, 2.75rem);
+}
+
+/* Lines of about 70 characters stay easy to read on tablets */
+.hero__content p {
+    max-width: 70ch;
+}
+
+.hero__figure {
+    margin: var(--space-l) 0 0;
+}
+
+/* Cropped on tablets, otherwise the 4:3 image would be taller than the
+   screen */
+.hero__figure img {
+    width: 100%;
+    max-height: 28rem;
+    object-fit: cover;
+    border-radius: 0.5rem;
+}
+
 /* Mobile and tablet (< 1200px): second part of the heading on its own line,
    so the break always falls after the dash */
 .hero__title-line {
