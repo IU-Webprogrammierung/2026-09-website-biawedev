@@ -117,3 +117,13 @@ window.addEventListener('scroll', syncBackToTop, { passive: true });
 
 // The footer only exists after loader.js has fetched it
 document.addEventListener('componentloaded', syncBackToTop);
+
+// Printing: closed <details> would print only their titles, so all chili
+// species are opened for the print and put back afterwards
+window.addEventListener('beforeprint', () => {
+    document.querySelectorAll('.species__item').forEach(item => {
+        item.open = true;
+    });
+});
+
+window.addEventListener('afterprint', syncSpecies);

@@ -1428,3 +1428,140 @@ main > .legal-section {
         justify-content: flex-start;
     }
 }
+
+/* ==========================================================================
+   6. Print
+   ========================================================================== */
+
+/* Only used when a page is printed or saved as PDF, the screen is unchanged */
+@media print {
+    /* A4 instead of the browser default (often US Letter) */
+    @page {
+        size: A4;
+        margin: 1.5cm;
+    }
+
+    /* Always dark text on white paper, also when the dark theme is active
+       (browsers leave out background colors when printing) */
+    :root,
+    [data-theme="dark"] {
+        --color-primary: #C62828;
+        --color-secondary: #2E7D32;
+        --color-bg: #FFFFFF;
+        --color-surface: #FFFFFF;
+        --color-text: #000000;
+        --color-on-primary: #FFFFFF;
+        --color-border: #BBBBBB;
+        --color-muted: #555555;
+
+        color-scheme: light;
+    }
+
+    /* No sticky footer on paper: a page height of 100dvh would push the
+       footer onto an extra sheet of its own */
+    body {
+        min-height: 0;
+        font-size: 11pt;
+    }
+
+    /* Paper needs less air than the screen */
+    main {
+        padding-bottom: 0;
+    }
+
+    h1 {
+        font-size: 22pt;
+    }
+
+    .site-footer {
+        margin-top: 1cm;
+    }
+
+    /* Controls are useless on paper: menu, theme switch, navigation,
+       buttons that open dialogs or lead to other pages, the contact form */
+    .skip-link,
+    .menu-toggle,
+    .theme-toggle,
+    .site-nav,
+    .site-footer__nav,
+    .back-to-top,
+    .card__button,
+    .hero__actions,
+    .error-page__actions,
+    .contact-form {
+        display: none !important;
+    }
+
+    /* Show where external links lead, the underline alone says nothing */
+    a[href^="http"]::after {
+        content: " (" attr(href) ")";
+        font-size: 0.875em;
+        word-break: break-all;
+    }
+
+    /* Contact links are plain text links on paper (display: inline, so the
+       printed address flows after the text instead of being squeezed in
+       the flex box of the button) */
+    .contact-details__list .button {
+        display: inline;
+        min-height: 0;
+        padding: 0;
+        border: 0;
+    }
+
+    /* Nothing opens or closes on paper: no chevron on the species */
+    .species__item summary::after {
+        display: none;
+    }
+
+    /* Keep blocks in one piece instead of cutting them between two pages */
+    .card,
+    .care-list__item,
+    .species__item,
+    .history__item,
+    figure,
+    tr,
+    li {
+        break-inside: avoid;
+    }
+
+    h1,
+    h2,
+    h3 {
+        break-after: avoid;
+    }
+
+    /* Three cards per row with smaller images, otherwise the card pages
+       would print one big photo per row */
+    .card-list,
+    .card-list--four {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5cm;
+    }
+
+    .hero__figure img,
+    .about__figure img {
+        max-height: 8cm;
+    }
+
+    /* Calendar: the whole table on the page, no scroll box, no sticky column */
+    .table-scroll {
+        overflow: visible;
+        border: 0;
+    }
+
+    .table-scroll table {
+        min-width: 0;
+    }
+
+    .table-scroll tr > :first-child {
+        position: static;
+    }
+
+    /* Seven columns must fit the paper width: less padding, smaller text */
+    .table-scroll th,
+    .table-scroll td {
+        padding: 0.25rem 0.375rem;
+        font-size: 0.875em;
+    }
+}
