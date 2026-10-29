@@ -13,6 +13,7 @@
     --color-on-primary: #FFFFFF;    /* text on red backgrounds (5.6:1) */
     --color-on-accent: #2B2118;     /* text/icons on orange, same in both themes */
     --color-border: #E6DCC6;        /* thin dividers, decoration only */
+    --color-muted: #74655A;         /* form field borders, placeholders (5.6:1) */
     --color-focus: #2B2118;
 
     /* Typography */
@@ -42,6 +43,7 @@
     --color-text: #F5EEDC;
     --color-on-primary: #1E1A17;    /* white on light red would be too weak */
     --color-border: #4A403A;
+    --color-muted: #A8998B;         /* (5.5:1) on the dark surface */
     --color-focus: #F5EEDC;
 
     color-scheme: dark;
@@ -1066,4 +1068,76 @@ body:has(dialog[open]) {
 /* Contact links as buttons in a row (.button-group): big touch targets */
 .contact-details__list {
     margin-top: var(--space-m);
+}
+
+/* --- About: contact form ------------------------------------------------ */
+
+/* The form as a card; fields stacked with even spacing */
+.contact-form form {
+    display: grid;
+    gap: var(--space-m);
+    max-width: 40rem;
+    margin-top: var(--space-m);
+    padding: var(--space-m);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+}
+
+/* Label above its field */
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.form-field label {
+    font-weight: 600;
+}
+
+/* Fields need a border with at least 3:1 contrast (WCAG 1.4.11), the light
+   --color-border would be too weak. font: inherit, because form controls do
+   not take over the page font by default */
+.form-field input,
+.form-field textarea {
+    min-height: 2.75rem;
+    padding: var(--space-s) var(--space-m);
+    font: inherit;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    border: 2px solid var(--color-muted);
+    border-radius: 0.5rem;
+}
+
+.form-field textarea {
+    resize: vertical;
+}
+
+.form-field ::placeholder {
+    color: var(--color-muted);
+    opacity: 1;
+}
+
+/* Consent: checkbox next to its (long) label text */
+.form-field--consent {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: var(--space-s);
+}
+
+.form-field--consent input {
+    flex-shrink: 0;
+    width: 1.25rem;
+    height: 1.25rem;
+    min-height: 0;
+    margin: 0.2rem 0 0;
+    accent-color: var(--color-primary);
+}
+
+.form-field--consent label {
+    font-weight: 400;
+}
+
+.contact-form button[type="submit"] {
+    justify-self: start;
 }
