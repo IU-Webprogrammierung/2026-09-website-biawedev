@@ -943,6 +943,100 @@ body:has(dialog[open]) {
     color: var(--color-primary);
 }
 
+/* Mobile (< 768px, screen only): every table row becomes a month block that
+   only lists the tasks of that month, no sideways scrolling (wireframe).
+   An exception to mobile first on purpose: written the other way round, the
+   table would need a dozen display resets from 768px. "screen" keeps the
+   table when printing. The task names come from data-label in the HTML */
+@media screen and (max-width: 767px) {
+    .calendar .table-scroll {
+        overflow: visible;
+        background-color: transparent;
+        border: 0;
+    }
+
+    .calendar table,
+    .calendar tr,
+    .calendar th,
+    .calendar td {
+        display: block;
+    }
+
+    .calendar table {
+        min-width: 0;
+    }
+
+    /* The column heads are repeated in every block, only screen readers
+       still get the original row */
+    .calendar thead {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+        white-space: nowrap;
+    }
+
+    /* Twelve small blocks, two side by side already at 360px */
+    .calendar tbody {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
+        gap: var(--space-s);
+    }
+
+    .calendar tr {
+        padding: var(--space-s) var(--space-m) var(--space-m);
+        background-color: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: 0.75rem;
+    }
+
+    .calendar tr > :first-child {
+        position: static;
+        padding: 0 0 var(--space-xs);
+        background-color: transparent;
+    }
+
+    .calendar th,
+    .calendar td {
+        border-top: 0;
+    }
+
+    .calendar td {
+        padding: 0;
+        font-size: 1rem;
+        line-height: 1.6;
+        text-align: left;
+        color: var(--color-text);
+    }
+
+    /* Months without this task: no line at all */
+    .calendar td:empty {
+        display: none;
+    }
+
+    /* Red dot in front, then the task name from data-label. The table dot
+       and "ja" are hidden here, the name says it all */
+    .calendar td > span {
+        display: none;
+    }
+
+    .calendar td::before {
+        content: "";
+        display: inline-block;
+        width: 0.5rem;
+        height: 0.5rem;
+        margin-right: var(--space-s);
+        vertical-align: middle;
+        background-color: var(--color-primary);
+        border-radius: 50%;
+    }
+
+    .calendar td::after {
+        content: attr(data-label);
+    }
+}
+
 /* ==========================================================================
    5. Pages
    ========================================================================== */
