@@ -405,3 +405,22 @@ a {
         gap: var(--space-m);
     }
 }
+
+/* ==========================================================================
+   5. Pages
+   ========================================================================== */
+
+/* --- Home: hero --------------------------------------------------------- */
+
+/* Mobile and tablet (< 1200px): second part of the heading on its own line,
+   so the break always falls after the dash */
+.hero__title-line {
+    display: block;
+}
+
+/* Desktop (≥ 1200px): the heading runs as one line again */
+@media (min-width: 1200px) {
+    .hero__title-line {
+        display: inline;
+    }
+}
