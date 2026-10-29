@@ -969,3 +969,43 @@ body:has(dialog[open]) {
     margin: 0;
     padding: 0 var(--space-m) var(--space-m);
 }
+
+/* Desktop (≥ 1200px): five cards side by side, all open (script.js sets
+   "open" and keeps the titles from closing them) */
+@media (min-width: 1200px) {
+    .species {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: var(--space-m);
+    }
+
+    .species h2 {
+        grid-column: 1 / -1;
+    }
+
+    .species__item + .species__item {
+        margin-top: 0;
+    }
+
+    .species__item summary {
+        cursor: default;
+    }
+
+    .species__item summary::after {
+        display: none;
+    }
+
+    .species__item summary:hover {
+        color: inherit;
+    }
+
+    /* About 200px per card: term above value */
+    .species__item dl {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .species__item dd + dt {
+        margin-top: var(--space-s);
+    }
+}
