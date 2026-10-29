@@ -503,6 +503,74 @@ main > h1 ~ section {
     list-style: none;
 }
 
+/* --- Cards -------------------------------------------------------------- */
+
+/* Image on top, text below, button always at the bottom: flex column, so
+   cards of different text length line up in the grid */
+.card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+}
+
+/* Same 4:3 crop for every card image, even if a photo has another format */
+.card__image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+}
+
+/* The card has no inner wrapper, so all content except the image gets the
+   side spacing */
+.card > :not(.card__image) {
+    margin-inline: var(--space-m);
+}
+
+.card__title {
+    margin-block: var(--space-m) var(--space-s);
+    font-size: 1.25rem;
+}
+
+.card__text {
+    margin-block: 0 var(--space-m);
+}
+
+/* Latin species name (Sorten) */
+.card__species {
+    margin-block: 0 var(--space-s);
+    font-size: 0.875rem;
+    color: var(--color-secondary);
+}
+
+.card__heat {
+    display: flex;
+    align-items: center;
+    gap: var(--space-s);
+    margin-block: 0 var(--space-s);
+}
+
+/* Origin of a variety as a small label */
+.badge {
+    width: fit-content;
+    margin-block: 0 var(--space-m);
+    padding: 0.125rem 0.625rem;
+    font-size: 0.875rem;
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+}
+
+/* margin-top: auto takes all free space above the button */
+.card__button {
+    align-self: flex-start;
+    margin-top: auto;
+    margin-bottom: var(--space-m);
+}
+
 /* ==========================================================================
    5. Pages
    ========================================================================== */
