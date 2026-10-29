@@ -599,6 +599,18 @@ main > h1 ~ section {
     }
 }
 
+/* --- Dialogs ------------------------------------------------------------ */
+
+/* No padding on the <dialog> itself: every click inside then hits its
+   content, and script.js can tell a backdrop click apart */
+dialog {
+    padding: 0;
+}
+
+.dialog__content {
+    padding: var(--space-m);
+}
+
 /* ==========================================================================
    5. Pages
    ========================================================================== */
