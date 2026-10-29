@@ -141,8 +141,21 @@ a {
     padding-inline: var(--space-m);
 }
 
-/* Page rhythm: space before the footer on every page */
+/* Sticky footer: the page is at least as high as the window and <main>
+   takes all free space, so on short pages (404, Impressum) the footer sits
+   at the bottom edge instead of in the middle of the window */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+}
+
+/* Page rhythm: space before the footer on every page.
+   width: 100% because in a flex column, margin-inline: auto (.container)
+   would otherwise shrink <main> to the width of its content */
 main {
+    flex-grow: 1;
+    width: 100%;
     padding-bottom: var(--space-xl);
 }
 
