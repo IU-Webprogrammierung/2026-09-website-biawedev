@@ -601,14 +601,98 @@ main > h1 ~ section {
 
 /* --- Dialogs ------------------------------------------------------------ */
 
-/* No padding on the <dialog> itself: every click inside then hits its
+/* Centered card, at most 40rem wide and never taller than the screen; long
+   content (recipes) scrolls inside the dialog.
+   No padding on the <dialog> itself: every click inside then hits its
    content, and script.js can tell a backdrop click apart */
 dialog {
+    width: min(100% - 2rem, 40rem);
+    max-height: calc(100dvh - 2rem);
     padding: 0;
+    overflow-y: auto;
+    color: var(--color-text);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+}
+
+/* Dims the page behind the open dialog */
+dialog::backdrop {
+    background-color: rgb(0 0 0 / 0.6);
+}
+
+/* The page behind must not scroll while a dialog is open */
+body:has(dialog[open]) {
+    overflow: hidden;
 }
 
 .dialog__content {
+    padding: 0 var(--space-m) var(--space-m);
+}
+
+/* Title and close button stay visible while the content scrolls */
+.dialog__header {
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-m);
+    margin-inline: calc(-1 * var(--space-m));
     padding: var(--space-m);
+    background-color: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.dialog__header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+/* The form around the close button would add its own spacing */
+.dialog__header form {
+    margin: 0;
+}
+
+/* Round ✕ button, 44px touch target */
+.dialog__close {
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    padding: 0;
+    font-size: 1.25rem;
+    color: var(--color-text);
+    background-color: transparent;
+    border: 2px solid var(--color-border);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.dialog__close:hover {
+    color: var(--color-on-primary);
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.dialog__content h3 {
+    margin-block: var(--space-l) var(--space-s);
+    font-size: 1.125rem;
+}
+
+/* Variety profile: term and value side by side */
+.dialog__content dl {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: var(--space-xs) var(--space-m);
+}
+
+.dialog__content dt {
+    font-weight: 600;
+}
+
+.dialog__content dd {
+    margin: 0;
 }
 
 /* ==========================================================================
