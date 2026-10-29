@@ -29,6 +29,11 @@
 
     --container-max: 1200px;
 
+    /* Motion: strong ease-out for things that appear (fast start, soft
+       landing); the built-in "ease-out" is too weak to be noticed */
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --duration-enter: 200ms;
+
     /* Native form controls and scrollbars in matching colors */
     color-scheme: light;
 }
@@ -495,14 +500,29 @@ main > h1 ~ section {
     box-shadow: 0 0.25rem 0.75rem rgb(0 0 0 / 0.25);
     opacity: 0;
     visibility: hidden;
-    transform: translateY(1rem);
-    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+    transition:
+        opacity var(--duration-enter) var(--ease-out),
+        visibility var(--duration-enter);
 }
 
 .back-to-top--visible {
     opacity: 1;
     visibility: visible;
-    transform: none;
+}
+
+/* With no motion preference it also slides up a little while fading in */
+@media (prefers-reduced-motion: no-preference) {
+    .back-to-top {
+        transform: translateY(1rem);
+        transition:
+            opacity var(--duration-enter) var(--ease-out),
+            transform var(--duration-enter) var(--ease-out),
+            visibility var(--duration-enter);
+    }
+
+    .back-to-top--visible {
+        transform: none;
+    }
 }
 
 .back-to-top:hover {
@@ -722,6 +742,53 @@ dialog {
 /* Dims the page behind the open dialog */
 dialog::backdrop {
     background-color: rgb(0 0 0 / 0.6);
+}
+
+/* Open/close animation: dialog and backdrop fade in. Closed, a <dialog> is
+   display: none, which normally cannot be animated: @starting-style gives
+   the values to start from when it opens, and allow-discrete keeps display
+   and the top layer (overlay) alive until the closing fade has finished.
+   Browsers without support simply open and close without animation */
+dialog,
+dialog::backdrop {
+    transition:
+        opacity var(--duration-enter) var(--ease-out),
+        display var(--duration-enter) allow-discrete,
+        overlay var(--duration-enter) allow-discrete;
+}
+
+dialog:not([open]),
+dialog:not([open])::backdrop {
+    opacity: 0;
+}
+
+@starting-style {
+    dialog[open],
+    dialog[open]::backdrop {
+        opacity: 0;
+    }
+}
+
+/* With no motion preference the dialog also grows slightly into place
+   (from 96 %, never from 0); "reduce motion" keeps only the fade */
+@media (prefers-reduced-motion: no-preference) {
+    dialog {
+        transition:
+            opacity var(--duration-enter) var(--ease-out),
+            transform var(--duration-enter) var(--ease-out),
+            display var(--duration-enter) allow-discrete,
+            overlay var(--duration-enter) allow-discrete;
+    }
+
+    dialog:not([open]) {
+        transform: scale(0.96);
+    }
+
+    @starting-style {
+        dialog[open] {
+            transform: scale(0.96);
+        }
+    }
 }
 
 /* The page behind must not scroll while a dialog is open */
