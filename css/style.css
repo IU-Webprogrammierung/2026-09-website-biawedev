@@ -405,3 +405,190 @@ a {
         gap: var(--space-m);
     }
 }
+
+/* --- Buttons ------------------------------------------------------------ */
+
+/* Links styled as buttons (hero, 404). At least 44px high, so they are easy
+   to hit on touch screens */
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.75rem;
+    padding: var(--space-s) 1.25rem;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    border: 2px solid var(--color-primary);
+    border-radius: 0.5rem;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+/* Main action: filled red */
+.button--primary {
+    color: var(--color-on-primary);
+    background-color: var(--color-primary);
+}
+
+.button--primary:hover {
+    border-color: var(--color-text);
+    background-color: var(--color-text);
+}
+
+/* Second action: outlined, fills with red on hover */
+.button--secondary {
+    color: var(--color-primary);
+    background-color: transparent;
+}
+
+.button--secondary:hover {
+    color: var(--color-on-primary);
+    background-color: var(--color-primary);
+}
+
+/* Row of buttons in a list: wraps to a new line when space runs out (360px) */
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-m);
+    margin-block: var(--space-l) 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* ==========================================================================
+   5. Pages
+   ========================================================================== */
+
+/* --- Home: hero --------------------------------------------------------- */
+
+/* Mobile and tablet (< 1200px): text, buttons and image stacked */
+.hero {
+    padding-block: var(--space-l);
+}
+
+/* Fluid size: 28px at 360px, grows with the viewport up to 44px */
+.hero h1 {
+    margin-top: 0;
+    font-size: clamp(1.75rem, 1.2rem + 2.5vw, 2.75rem);
+}
+
+/* Lines of about 70 characters stay easy to read on tablets */
+.hero__content p {
+    max-width: 70ch;
+}
+
+.hero__figure {
+    margin: var(--space-l) 0 0;
+}
+
+/* Cropped on tablets, otherwise the 4:3 image would be taller than the
+   screen */
+.hero__figure img {
+    width: 100%;
+    max-height: 28rem;
+    object-fit: cover;
+    border-radius: 0.5rem;
+}
+
+/* Mobile and tablet (< 1200px): second part of the heading on its own line,
+   so the break always falls after the dash */
+.hero__title-line {
+    display: block;
+}
+
+/* Desktop (≥ 1200px): two columns, text left and image right, both
+   vertically centered; the heading flows freely again, with lines of
+   similar length instead of a single word left over */
+@media (min-width: 1200px) {
+    .hero {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-l);
+        align-items: center;
+    }
+
+    .hero h1 {
+        text-wrap: balance;
+    }
+
+    .hero__title-line {
+        display: inline;
+    }
+
+    .hero__figure {
+        margin: 0;
+    }
+}
+
+/* --- Home: history ------------------------------------------------------ */
+
+.history {
+    padding-bottom: var(--space-xl);
+}
+
+.history h2 {
+    margin-top: 0;
+}
+
+/* Same reading width as in the hero */
+.history > p {
+    max-width: 70ch;
+}
+
+/* Mobile and tablet (< 1200px): vertical timeline, the left border is the
+   line, each year sits on it as a red badge */
+.history__timeline {
+    margin-block: var(--space-l);
+    margin-left: var(--space-s);
+    padding: 0 0 0 var(--space-l);
+    list-style: none;
+    border-left: 2px solid var(--color-secondary);
+}
+
+.history__item + .history__item {
+    margin-top: var(--space-l);
+}
+
+/* Year badge: pulled back over the line so it starts just left of it.
+   The ring in the background color cuts the line around the badge */
+.history__title {
+    display: block;
+    width: fit-content;
+    margin: 0 0 var(--space-s) calc(-1 * var(--space-l) - var(--space-s));
+    padding: var(--space-xs) 0.75rem;
+    font-size: 1rem;
+    color: var(--color-on-primary);
+    background-color: var(--color-primary);
+    border-radius: 1rem;
+    box-shadow: 0 0 0 3px var(--color-bg);
+}
+
+.history__item p {
+    max-width: 70ch;
+    margin: 0;
+}
+
+/* Desktop (≥ 1200px): horizontal timeline with five stations side by side.
+   The line moves to the top border, the badges sit centered on it:
+   pulled up by half their height (1.2 line height + padding = 1.7rem) */
+@media (min-width: 1200px) {
+    .history__timeline {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: var(--space-l);
+        margin-left: 0;
+        padding: 0;
+        border-left: 0;
+        border-top: 2px solid var(--color-secondary);
+    }
+
+    .history__item + .history__item {
+        margin-top: 0;
+    }
+
+    .history__title {
+        margin: calc(-0.85rem - 1px) 0 var(--space-s);
+    }
+}
