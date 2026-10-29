@@ -451,8 +451,8 @@ main > h1 ~ section {
 
 /* --- Buttons ------------------------------------------------------------ */
 
-/* Links styled as buttons (hero, 404). At least 44px high, so they are easy
-   to hit on touch screens */
+/* Links and <button> elements with the same look (hero, 404, cards).
+   At least 44px high, so they are easy to hit on touch screens */
 .button {
     display: inline-flex;
     align-items: center;
@@ -460,7 +460,10 @@ main > h1 ~ section {
     min-height: 2.75rem;
     padding: var(--space-s) 1.25rem;
     font-family: var(--font-heading);
+    /* <button> does not inherit the font size of the page by default */
+    font-size: inherit;
     font-weight: 600;
+    cursor: pointer;
     text-align: center;
     text-decoration: none;
     border: 2px solid var(--color-primary);
