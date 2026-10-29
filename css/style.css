@@ -1202,3 +1202,107 @@ body:has(dialog[open]) {
         aspect-ratio: 3 / 2;
     }
 }
+
+/* --- Legal pages: Impressum, Datenschutz --------------------------------- */
+
+/* Note that the details are fictional: orange bar on the left as a marker,
+   the text itself stays in the normal text color (orange is too weak for
+   text) */
+.notice {
+    max-width: 70ch;
+    padding: var(--space-m);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-left: 0.375rem solid var(--color-accent);
+    border-radius: 0.5rem;
+}
+
+/* Legal texts are many short sections: smaller gap than on the other
+   content pages (overrides main > h1 ~ section) */
+main > .legal-section {
+    margin-top: var(--space-l);
+}
+
+.legal-section h2 {
+    margin-bottom: var(--space-s);
+}
+
+.legal-section h3 {
+    margin-block: var(--space-m) var(--space-xs);
+    font-size: 1.125rem;
+}
+
+.legal-section p,
+.legal-section ul,
+.legal-section address {
+    max-width: 70ch;
+}
+
+/* <address> is italic by default, a postal address reads better upright */
+.legal-section address {
+    font-style: normal;
+}
+
+/* --- 404 page ------------------------------------------------------------ */
+
+/* Mobile and tablet (< 1200px): one centered column, illustration on top.
+   In the HTML the image comes after the text; it is decorative (alt=""),
+   so moving it up with order does not change what screen readers read */
+.error-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-l);
+    padding-top: var(--space-l);
+    text-align: center;
+}
+
+.error-page__image {
+    order: -1;
+    width: min(60%, 14rem);
+}
+
+.error-page__code {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: var(--color-primary);
+}
+
+.error-page h1 {
+    margin-block: var(--space-xs) var(--space-m);
+}
+
+.error-page__text {
+    max-width: 50ch;
+    margin-inline: auto;
+}
+
+.error-page__actions {
+    justify-content: center;
+}
+
+/* Desktop (≥ 1200px): two columns like the hero, text left, seedling right */
+@media (min-width: 1200px) {
+    .error-page {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        text-align: left;
+    }
+
+    .error-page__image {
+        order: 0;
+        justify-self: center;
+        width: 20rem;
+    }
+
+    .error-page__text {
+        margin-inline: 0;
+    }
+
+    .error-page__actions {
+        justify-content: flex-start;
+    }
+}
