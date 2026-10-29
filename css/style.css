@@ -1042,3 +1042,28 @@ body:has(dialog[open]) {
         margin-top: var(--space-s);
     }
 }
+
+/* --- About: story and contact details ----------------------------------- */
+
+.about__figure {
+    margin: 0 0 var(--space-l);
+}
+
+/* Same crop as the hero image on the home page: on tablets the 4:3 photo
+   would otherwise be taller than the screen */
+.about__figure img {
+    width: 100%;
+    max-height: 28rem;
+    object-fit: cover;
+    border-radius: 0.5rem;
+}
+
+.about__content p,
+.contact-details p {
+    max-width: 70ch;
+}
+
+/* Contact links as buttons in a row (.button-group): big touch targets */
+.contact-details__list {
+    margin-top: var(--space-m);
+}
