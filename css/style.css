@@ -498,9 +498,26 @@ a {
     display: block;
 }
 
-/* Desktop (≥ 1200px): the heading runs as one line again */
+/* Desktop (≥ 1200px): two columns, text left and image right, both
+   vertically centered; the heading flows freely again, with lines of
+   similar length instead of a single word left over */
 @media (min-width: 1200px) {
+    .hero {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-l);
+        align-items: center;
+    }
+
+    .hero h1 {
+        text-wrap: balance;
+    }
+
     .hero__title-line {
         display: inline;
+    }
+
+    .hero__figure {
+        margin: 0;
     }
 }
