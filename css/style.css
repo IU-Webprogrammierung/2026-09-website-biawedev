@@ -92,6 +92,14 @@ a {
     color: var(--color-link);
 }
 
+/* Jump links (skip link, back to top) glide instead of jumping, but only
+   for people who have not asked their system for less motion */
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
 /* Visible focus for keyboard users only (WCAG 2.4.7) */
 :focus-visible {
     outline: 3px solid var(--color-focus);
@@ -461,6 +469,53 @@ main > h1 ~ section {
     .site-footer__list {
         flex-direction: row;
         gap: var(--space-m);
+    }
+}
+
+/* --- Back to top -------------------------------------------------------- */
+
+/* Round button fixed at the bottom right. Hidden at the top of the page;
+   visibility (not only opacity) takes it out of the tab order while hidden.
+   script.js adds --visible after scrolling */
+.back-to-top {
+    position: fixed;
+    right: var(--space-m);
+    bottom: var(--space-m);
+    z-index: 50;
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-on-primary);
+    text-decoration: none;
+    background-color: var(--color-primary);
+    border-radius: 50%;
+    box-shadow: 0 0.25rem 0.75rem rgb(0 0 0 / 0.25);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(1rem);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+}
+
+.back-to-top--visible {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+}
+
+.back-to-top:hover {
+    background-color: var(--color-text);
+}
+
+/* Desktop (≥ 1200px): the footer is one row with "Datenschutz" at the right
+   end, right under the button. The row keeps 5rem free on the right
+   (button 2.75rem + 1rem distance + gap; 100vw also counts the scrollbar),
+   minus the margin next to the 1200px container on wide screens */
+@media (min-width: 1200px) {
+    .site-footer__inner {
+        padding-right: max(var(--space-m), calc(5rem - (100vw - 1200px) / 2));
     }
 }
 

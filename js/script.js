@@ -102,3 +102,18 @@ document.addEventListener('click', event => {
         event.preventDefault();
     }
 });
+
+// Back-to-top link (in the footer): only shown once the page is scrolled
+// down a bit, at the top it would just cover content
+function syncBackToTop() {
+    const link = document.querySelector('.back-to-top');
+    if (link) {
+        link.classList.toggle('back-to-top--visible', window.scrollY > 600);
+    }
+}
+
+// passive: the listener never blocks scrolling
+window.addEventListener('scroll', syncBackToTop, { passive: true });
+
+// The footer only exists after loader.js has fetched it
+document.addEventListener('componentloaded', syncBackToTop);
