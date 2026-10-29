@@ -873,3 +873,38 @@ body:has(dialog[open]) {
         margin: calc(-0.85rem - 1px) 0 var(--space-s);
     }
 }
+
+/* --- Growing: care during the season ------------------------------------ */
+
+/* Mobile (< 768px): the three care topics (Licht, Gießen, Düngen) stacked */
+.care-list {
+    display: grid;
+    gap: var(--space-m);
+    margin: var(--space-l) 0 0;
+}
+
+.care-list__item {
+    padding: var(--space-m);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+}
+
+.care-list dt {
+    margin-bottom: var(--space-s);
+    font-family: var(--font-heading);
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-secondary);
+}
+
+.care-list dd {
+    margin: 0;
+}
+
+/* Tablet and desktop (≥ 768px): three topics side by side */
+@media (min-width: 768px) {
+    .care-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
