@@ -1,9 +1,13 @@
-// <detail-dialog id="dialog-sowing" heading="Aussaat"> … </detail-dialog>
+// <detail-dialog id="dialog-sowing" heading="Aussaat" image="images/growing-sowing.jpg" image-alt="…"> … </detail-dialog>
 //
 // Web component for the detail windows. The page only writes the content,
 // the component wraps it in the <dialog> structure (title, close button,
-// aria-labelledby). It uses no Shadow DOM, so style.css and the theme
-// variables apply as usual, and the content stays readable in the page's HTML.
+// optional header image, aria-labelledby). It uses no Shadow DOM, so
+// style.css and the theme variables apply as usual, and the content stays
+// readable in the page's HTML.
+//
+// Load this script with defer: the component reads its children, which must
+// be parsed by then.
 class Dialog extends HTMLElement {
     connectedCallback() {
         // Moving the element in the DOM calls this again, build only once
@@ -34,9 +38,25 @@ class Dialog extends HTMLElement {
         title.id = titleId;
         title.textContent = this.getAttribute('heading');
 
-        // The content written between the tags moves below the header
-        const content = [...this.childNodes];
-        this.dialog.querySelector('article').append(...content);
+        const article = this.dialog.querySelector('article');
+
+        if (this.hasAttribute('image')) {
+            const image = document.createElement('img');
+            image.className = 'dialog__image';
+            image.src = this.getAttribute('image');
+            image.alt = this.getAttribute('image-alt') ?? '';
+            image.width = 800;
+            image.height = 600;
+            image.loading = 'lazy';
+            article.append(image);
+        }
+
+        article.append(...this.childNodes);
+
+        // style.css numbers the steps with list-style: none, Safari then
+        // drops the list role, so it is set explicitly
+        article.querySelectorAll('ol').forEach(list => list.setAttribute('role', 'list'));
+
         this.replaceChildren(this.dialog);
     }
 

@@ -180,7 +180,7 @@
         </section>
 
         <!-- Modals: variety profiles, opened by the buttons with data-dialog -->
-        <detail-dialog id="dialog-aji-amarillo" heading="Aji Amarillo">
+        <detail-dialog id="dialog-aji-amarillo" heading="Aji Amarillo" image="images/variety-aji-amarillo.jpg" image-alt="Haufen orangegelber Aji-Amarillo-Schoten mit grünen Stielen">
             <p>„Amarillo“ heißt auf Spanisch „gelb“, obwohl die Schoten reif eher orange leuchten. Die Aji Amarillo ist die wichtigste Chili der peruanischen Küche. Sie schmeckt fruchtig mit leichter Zitrusnote und hat eine angenehm mittlere Schärfe.</p>
             <dl>
                 <dt>Art</dt>
@@ -188,17 +188,19 @@
                 <dt>Herkunft</dt>
                 <dd>Peru</dd>
                 <dt>Schärfe</dt>
-                <dd>3 von 5, etwa 30.000 bis 50.000 SHU</dd>
+                <dd class="dialog__heat"><meter min="0" max="5" value="3" aria-hidden="true"></meter><span>3 von 5, etwa 30.000 bis 50.000 SHU</span></dd>
                 <dt>Wuchs</dt>
                 <dd>Hoch, bis etwa 150 cm</dd>
                 <dt>Verwendung</dt>
                 <dd>Ají-Sauce, Ceviche, Pasten, Fischgerichte</dd>
             </dl>
-            <h3>Anbautipp</h3>
-            <p>Die Pflanze wird groß und braucht einen geräumigen Topf sowie eine Stütze. Sie trägt ihre Früchte erst spät im Jahr, ein sonniger und warmer Platz lohnt sich daher besonders.</p>
+            <div class="dialog__note">
+                <h3>Anbautipp</h3>
+                <p>Die Pflanze wird groß und braucht einen geräumigen Topf sowie eine Stütze. Sie trägt ihre Früchte erst spät im Jahr, ein sonniger und warmer Platz lohnt sich daher besonders.</p>
+            </div>
         </detail-dialog>
 
-        <detail-dialog id="dialog-carolina-reaper" heading="Carolina Reaper">
+        <detail-dialog id="dialog-carolina-reaper" heading="Carolina Reaper" image="images/variety-carolina-reaper.jpg" image-alt="Dicht gepackte, runzlige rote Carolina-Reaper-Schoten">
             <p>Die Carolina Reaper wurde in den USA gezüchtet und war lange die schärfste Chili der Welt. Ihre knubbeligen roten Schoten mit spitzem Schwanz schmecken zuerst fruchtig-süß, dann folgt eine extreme, lang anhaltende Schärfe.</p>
             <dl>
                 <dt>Art</dt>
@@ -206,17 +208,19 @@
                 <dt>Herkunft</dt>
                 <dd>USA (South Carolina), Züchtung</dd>
                 <dt>Schärfe</dt>
-                <dd>5 von 5, durchschnittlich über 1.500.000 SHU</dd>
+                <dd class="dialog__heat"><meter min="0" max="5" value="5" aria-hidden="true"></meter><span>5 von 5, durchschnittlich über 1.500.000 SHU</span></dd>
                 <dt>Wuchs</dt>
                 <dd>Kräftig, etwa 90 bis 120 cm hoch</dd>
                 <dt>Verwendung</dt>
                 <dd>Nur in winzigen Mengen, etwa für Extrem-Saucen</dd>
             </dl>
-            <h3>Sicherheitshinweis</h3>
-            <p>Beim Verarbeiten immer Handschuhe tragen, nicht ins Gesicht fassen und die Schoten außer Reichweite von Kindern aufbewahren. Die Reaper ist nichts für Einsteiger.</p>
+            <div class="dialog__note dialog__note--warning">
+                <h3>Sicherheitshinweis</h3>
+                <p>Beim Verarbeiten immer Handschuhe tragen, nicht ins Gesicht fassen und die Schoten außer Reichweite von Kindern aufbewahren. Die Reaper ist nichts für Einsteiger.</p>
+            </div>
         </detail-dialog>
 
-        <detail-dialog id="dialog-cayenne" heading="Cayenne">
+        <detail-dialog id="dialog-cayenne" heading="Cayenne" image="images/variety-cayenne.jpg" image-alt="Schlanke rote und grüne Cayenne-Schoten an der Pflanze">
             <p>Die Cayenne bildet lange, schlanke und oft leicht gebogene Schoten. Ihre Schärfe ist klar und geradlinig, ohne viel Eigenaroma. Deshalb eignet sie sich besonders gut zum Trocknen und Mahlen.</p>
             <dl>
                 <dt>Art</dt>
@@ -224,17 +228,19 @@
                 <dt>Herkunft</dt>
                 <dd>Südamerika</dd>
                 <dt>Schärfe</dt>
-                <dd>3 von 5, etwa 30.000 bis 50.000 SHU</dd>
+                <dd class="dialog__heat"><meter min="0" max="5" value="3" aria-hidden="true"></meter><span>3 von 5, etwa 30.000 bis 50.000 SHU</span></dd>
                 <dt>Wuchs</dt>
                 <dd>Buschig, etwa 70 bis 100 cm hoch</dd>
                 <dt>Verwendung</dt>
                 <dd>Chilipulver, Saucen, Eintöpfe, Gewürzmischungen</dd>
             </dl>
-            <h3>Anbautipp</h3>
-            <p>Eine Pflanze liefert viele Schoten, die sich gut an der Luft trocknen lassen. Mehr dazu findest du unter <a href="harvest.html">Ernte & Verarbeitung</a>.</p>
+            <div class="dialog__note">
+                <h3>Anbautipp</h3>
+                <p>Eine Pflanze liefert viele Schoten, die sich gut an der Luft trocknen lassen. Mehr dazu findest du unter <a href="harvest.html">Ernte & Verarbeitung</a>.</p>
+            </div>
         </detail-dialog>
 
-        <detail-dialog id="dialog-habanero" heading="Habanero">
+        <detail-dialog id="dialog-habanero" heading="Habanero" image="images/variety-habanero.jpg" image-alt="Haufen roter, orangefarbener und gelber Habanero-Schoten">
             <p>Die Habanero ist ein Klassiker unter den scharfen Chilis. Ihre kleinen, laternenförmigen Schoten duften fruchtig und erinnern an Aprikose und Zitrus. Die Schärfe baut sich langsam auf und hält lange an.</p>
             <dl>
                 <dt>Art</dt>
@@ -242,17 +248,19 @@
                 <dt>Herkunft</dt>
                 <dd>Mittel- und Südamerika</dd>
                 <dt>Schärfe</dt>
-                <dd>4 von 5, etwa 100.000 bis 350.000 SHU</dd>
+                <dd class="dialog__heat"><meter min="0" max="5" value="4" aria-hidden="true"></meter><span>4 von 5, etwa 100.000 bis 350.000 SHU</span></dd>
                 <dt>Wuchs</dt>
                 <dd>Kräftig, etwa 80 bis 120 cm hoch</dd>
                 <dt>Verwendung</dt>
                 <dd>Hot Sauce, Salsa, Marinaden, fruchtige Currys</dd>
             </dl>
-            <h3>Anbautipp</h3>
-            <p>Habaneros brauchen Wärme und Geduld. Sie keimen langsam und sollten deshalb schon im Januar oder Februar ausgesät werden.</p>
+            <div class="dialog__note">
+                <h3>Anbautipp</h3>
+                <p>Habaneros brauchen Wärme und Geduld. Sie keimen langsam und sollten deshalb schon im Januar oder Februar ausgesät werden.</p>
+            </div>
         </detail-dialog>
 
-        <detail-dialog id="dialog-jalapeno" heading="Jalapeño">
+        <detail-dialog id="dialog-jalapeno" heading="Jalapeño" image="images/variety-jalapeno.jpg" image-alt="Viele grüne Jalapeños, dazwischen eine reife rote Schote">
             <p>Die Jalapeño ist die bekannteste mexikanische Chili und ein guter Einstieg: kräftiges Aroma, aber nur moderate Schärfe. Meist wird sie grün geerntet, dann schmeckt sie knackig und frisch. Voll ausgereift färbt sie sich rot und wird süßlicher.</p>
             <dl>
                 <dt>Art</dt>
@@ -260,14 +268,16 @@
                 <dt>Herkunft</dt>
                 <dd>Mexiko</dd>
                 <dt>Schärfe</dt>
-                <dd>2 von 5, etwa 2.500 bis 8.000 SHU</dd>
+                <dd class="dialog__heat"><meter min="0" max="5" value="2" aria-hidden="true"></meter><span>2 von 5, etwa 2.500 bis 8.000 SHU</span></dd>
                 <dt>Wuchs</dt>
                 <dd>Buschig, etwa 60 bis 90 cm hoch</dd>
                 <dt>Verwendung</dt>
                 <dd>Nachos, Salsa, gefüllt und überbacken</dd>
             </dl>
-            <h3>Anbautipp</h3>
-            <p>Jalapeños sind robust und tragen früh und reichlich. Sie kommen auch mit Balkon und größeren Kübeln gut zurecht und verzeihen kleine Pflegefehler.</p>
+            <div class="dialog__note">
+                <h3>Anbautipp</h3>
+                <p>Jalapeños sind robust und tragen früh und reichlich. Sie kommen auch mit Balkon und größeren Kübeln gut zurecht und verzeihen kleine Pflegefehler.</p>
+            </div>
         </detail-dialog>
     </main>
 

@@ -672,7 +672,8 @@ main > h1 ~ section {
 /* Heat bar in chili red on a light track (red vs. track at least 3:1, so the
    filled part is visible as a graphic, WCAG 1.4.11). Chrome/Safari and
    Firefox each style the bar with their own pseudo-elements */
-.card__heat meter {
+.card__heat meter,
+.dialog__heat meter {
     width: 6rem;
     height: 0.75rem;
     background: var(--color-border);
@@ -681,7 +682,8 @@ main > h1 ~ section {
     appearance: none;
 }
 
-.card__heat meter::-webkit-meter-bar {
+.card__heat meter::-webkit-meter-bar,
+.dialog__heat meter::-webkit-meter-bar {
     height: 0.75rem;
     background: var(--color-border);
     border: 0;
@@ -692,12 +694,16 @@ main > h1 ~ section {
    states, all of them get the same red */
 .card__heat meter::-webkit-meter-optimum-value,
 .card__heat meter::-webkit-meter-suboptimum-value,
-.card__heat meter::-webkit-meter-even-less-good-value {
+.card__heat meter::-webkit-meter-even-less-good-value,
+.dialog__heat meter::-webkit-meter-optimum-value,
+.dialog__heat meter::-webkit-meter-suboptimum-value,
+.dialog__heat meter::-webkit-meter-even-less-good-value {
     background: var(--color-primary);
     border-radius: 0.375rem;
 }
 
-.card__heat meter::-moz-meter-bar {
+.card__heat meter::-moz-meter-bar,
+.dialog__heat meter::-moz-meter-bar {
     background: var(--color-primary);
     border-radius: 0.375rem;
 }
@@ -762,7 +768,9 @@ dialog {
     color: var(--color-text);
     background-color: var(--color-surface);
     border: 1px solid var(--color-border);
+    border-top: 0.25rem solid var(--color-primary);
     border-radius: 0.75rem;
+    box-shadow: 0 1rem 3rem rgb(0 0 0 / 0.3);
 }
 
 /* Dims the page behind the open dialog */
@@ -882,6 +890,93 @@ detail-dialog:not(:defined) {
     font-size: 1.125rem;
 }
 
+/* Photo under the title bar (same as on the card). The negative margin
+   lets it run edge to edge across the content padding */
+.dialog__image {
+    display: block;
+    width: calc(100% + 2 * var(--space-m));
+    max-width: none;
+    height: auto;
+    margin: 0 calc(-1 * var(--space-m)) var(--space-m);
+    aspect-ratio: 8 / 3;
+    object-fit: cover;
+}
+
+/* Steps as numbered red circles. The number comes from a counter, the list
+   keeps its meaning through role="list" (set in dialog.js) */
+.dialog__content ol {
+    display: grid;
+    gap: var(--space-m);
+    margin-block: var(--space-m);
+    padding: 0;
+    list-style: none;
+    counter-reset: step;
+}
+
+.dialog__content ol > li {
+    position: relative;
+    min-height: 2rem;
+    padding: 0.125rem 0 0 2.75rem;
+    counter-increment: step;
+}
+
+/* The second content value has an empty alternative text, so screen
+   readers do not read the number twice (the list announces the position) */
+.dialog__content ol > li::before {
+    content: counter(step);
+    content: counter(step) / "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    font-weight: 700;
+    color: var(--color-on-primary);
+    background-color: var(--color-primary);
+    border-radius: 50%;
+}
+
+/* Tips (green) and safety notes (red) as tinted boxes with a colored edge.
+   The heading names the kind of note, so color is not the only signal */
+.dialog__note {
+    margin-top: var(--space-l);
+    padding: var(--space-m);
+    background-color: color-mix(in srgb, var(--color-secondary) 12%, var(--color-surface));
+    border-left: 0.25rem solid var(--color-secondary);
+    border-radius: 0 0.5rem 0.5rem 0;
+}
+
+.dialog__note--warning {
+    background-color: color-mix(in srgb, var(--color-primary) 10%, var(--color-surface));
+    border-left-color: var(--color-primary);
+}
+
+.dialog__note h3 {
+    margin-top: 0;
+}
+
+.dialog__note > :last-child {
+    margin-bottom: 0;
+}
+
+/* Profile of a variety as a tinted fact box */
+.dialog__content dl {
+    padding: var(--space-m);
+    background-color: color-mix(in srgb, var(--color-accent) 14%, var(--color-surface));
+    border-left: 0.25rem solid var(--color-accent);
+    border-radius: 0 0.5rem 0.5rem 0;
+}
+
+/* Heat bar and value side by side */
+.dialog__heat {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-xs) var(--space-m);
+}
+
 /* Profiles (variety dialogs, chili species): term and value side by side */
 .dialog__content dl,
 .species__item dl {
@@ -898,6 +993,10 @@ detail-dialog:not(:defined) {
 .dialog__content dd,
 .species__item dd {
     margin: 0;
+}
+
+#dialog-overwintering .dialog__image {
+    object-position: top;
 }
 
 /* --- Tables ------------------------------------------------------------- */

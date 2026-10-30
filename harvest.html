@@ -95,7 +95,7 @@
         </ul>
 
         <!-- Modals: short guides for each processing method, opened by the buttons with data-dialog -->
-        <detail-dialog id="dialog-fresh" heading="Frisch">
+        <detail-dialog id="dialog-fresh" heading="Frisch" image="images/harvest-fresh.jpg" image-alt="Frisch geerntete rote Chilis in einer Holzschale">
             <p>Frisch geerntet haben Chilis das meiste Aroma. Du kannst sie roh oder gegart verwenden.</p>
             <h3>Verwendung</h3>
             <ul>
@@ -111,7 +111,7 @@
             <p>Die Schärfe sitzt vor allem in den hellen Scheidewänden. Wer es milder mag, entfernt Scheidewände und Kerne.</p>
         </detail-dialog>
 
-        <detail-dialog id="dialog-drying" heading="Trocknen">
+        <detail-dialog id="dialog-drying" heading="Trocknen" image="images/harvest-drying.jpg" image-alt="Zum Trocknen aufgehängte grüne und rote Chilischoten unter einer Decke">
             <p>Getrocknete Chilis halten sich über ein Jahr und sind die Grundlage für Flocken und Pulver. Besonders gut trocknen kleine, dünnfleischige Sorten wie Cayenne.</p>
             <h3>Drei Methoden</h3>
             <dl>
@@ -125,7 +125,7 @@
             <p>Die Chilis sind fertig, wenn sie rascheln und beim Biegen brechen. Sind sie noch biegsam, brauchen sie mehr Zeit, sonst schimmeln sie bei der Lagerung.</p>
         </detail-dialog>
 
-        <detail-dialog id="dialog-flakes" heading="Chiliflocken">
+        <detail-dialog id="dialog-flakes" heading="Chiliflocken" image="images/harvest-flakes.jpg" image-alt="Nahaufnahme von Chiliflocken mit gelben Samen">
             <p>Chiliflocken sind schnell gemacht und vielseitig: Sie passen auf Pizza, Pasta, Eier und in Marinaden.</p>
             <h3>So geht’s</h3>
             <ol>
@@ -134,14 +134,16 @@
                 <li>Die Schoten mit einem Mörser, einem Messer oder kurz im Zerkleinerer grob zerkleinern.</li>
                 <li>In ein sauberes, trockenes Glas füllen und beschriften.</li>
             </ol>
-            <h3>Gut zu wissen</h3>
-            <ul>
-                <li>Beim Zerkleinern entsteht scharfer Staub. Handschuhe tragen, nicht ins Gesicht fassen und nicht direkt über das Gefäß beugen.</li>
-                <li>Kühl und dunkel gelagert halten die Flocken ihr Aroma etwa ein Jahr.</li>
-            </ul>
+            <div class="dialog__note">
+                <h3>Gut zu wissen</h3>
+                <ul>
+                    <li>Beim Zerkleinern entsteht scharfer Staub. Handschuhe tragen, nicht ins Gesicht fassen und nicht direkt über das Gefäß beugen.</li>
+                    <li>Kühl und dunkel gelagert halten die Flocken ihr Aroma etwa ein Jahr.</li>
+                </ul>
+            </div>
         </detail-dialog>
 
-        <detail-dialog id="dialog-powder" heading="Chilipulver">
+        <detail-dialog id="dialog-powder" heading="Chilipulver" image="images/harvest-powder.jpg" image-alt="Glasschale mit orangerotem Chilipulver, umgeben von getrockneten roten Chilischoten">
             <p>Selbst gemahlenes Chilipulver schmeckt deutlich intensiver als gekauftes, weil du genau weißt, welche Sorte drinsteckt. Du kannst auch mehrere Sorten mischen.</p>
             <h3>So geht’s</h3>
             <ol>
@@ -151,11 +153,13 @@
                 <li>Das Pulver durch ein feines Sieb geben und gröbere Reste erneut mahlen.</li>
                 <li>Luftdicht, kühl und dunkel lagern.</li>
             </ol>
-            <h3>Sicherheitshinweis</h3>
-            <p>Nach dem Mahlen den Deckel der Mühle erst nach einigen Minuten öffnen, damit sich der Staub setzt. Handschuhe tragen und das Gerät gründlich reinigen.</p>
+            <div class="dialog__note dialog__note--warning">
+                <h3>Sicherheitshinweis</h3>
+                <p>Nach dem Mahlen den Deckel der Mühle erst nach einigen Minuten öffnen, damit sich der Staub setzt. Handschuhe tragen und das Gerät gründlich reinigen.</p>
+            </div>
         </detail-dialog>
 
-        <detail-dialog id="dialog-oil" heading="Chiliöl">
+        <detail-dialog id="dialog-oil" heading="Chiliöl" image="images/harvest-oil.jpg" image-alt="Löffel mit Chiliöl und Chiliflocken über einem Glas">
             <p>Chiliöl verleiht Nudeln, Suppen und Pizza Schärfe und Aroma. Entscheidend ist, dass du nur vollständig getrocknete Chilis verwendest.</p>
             <h3>So geht’s</h3>
             <ol>
@@ -164,11 +168,13 @@
                 <li>Das heiße Öl über die Chilis gießen, bis sie bedeckt sind.</li>
                 <li>Abkühlen lassen, verschließen und ein bis zwei Wochen an einem dunklen Ort ziehen lassen.</li>
             </ol>
-            <h3>Sicherheitshinweis</h3>
-            <p>Frische Chilis in Öl können gefährliche Bakterien (Botulismus) bilden. Verwende deshalb nur getrocknete Schoten, bewahre das Öl im Kühlschrank auf und verbrauche es innerhalb weniger Wochen.</p>
+            <div class="dialog__note dialog__note--warning">
+                <h3>Sicherheitshinweis</h3>
+                <p>Frische Chilis in Öl können gefährliche Bakterien (Botulismus) bilden. Verwende deshalb nur getrocknete Schoten, bewahre das Öl im Kühlschrank auf und verbrauche es innerhalb weniger Wochen.</p>
+            </div>
         </detail-dialog>
 
-        <detail-dialog id="dialog-hot-sauce" heading="Hot Sauce">
+        <detail-dialog id="dialog-hot-sauce" heading="Hot Sauce" image="images/harvest-hot-sauce.jpg" image-alt="Glas mit roter Chili-Sauce neben einer Schale mit frischen roten Chilis">
             <p>Eine fermentierte Hot Sauce schmeckt komplexer als eine einfach gekochte. Das Prinzip ist simpel: Milchsäurebakterien vergären die Chilis in Salzlake, danach wird alles püriert und abgefüllt.</p>
             <h3>Zutaten</h3>
             <ul>
@@ -184,11 +190,13 @@
                 <li>Das Glas locker verschließen und bei Zimmertemperatur etwa ein bis zwei Wochen gären lassen. Dabei täglich kurz entlüften.</li>
                 <li>Die Maische mit etwas Lake und Essig fein pürieren, kurz aufkochen und in saubere Flaschen füllen.</li>
             </ol>
-            <h3>Gut zu wissen</h3>
-            <ul>
-                <li>Weißer Schimmel an der Oberfläche ist Kahmhefe und harmlos. Bei buntem, flauschigem Schimmel das Ganze entsorgen.</li>
-                <li>Im Kühlschrank hält sich die Sauce mehrere Monate.</li>
-            </ul>
+            <div class="dialog__note">
+                <h3>Gut zu wissen</h3>
+                <ul>
+                    <li>Weißer Schimmel an der Oberfläche ist Kahmhefe und harmlos. Bei buntem, flauschigem Schimmel das Ganze entsorgen.</li>
+                    <li>Im Kühlschrank hält sich die Sauce mehrere Monate.</li>
+                </ul>
+            </div>
         </detail-dialog>
     </main>
 
