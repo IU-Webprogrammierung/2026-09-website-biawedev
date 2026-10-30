@@ -8,6 +8,11 @@
     <link rel="icon" href="images/logo.png" sizes="96x96" type="image/png">
     <link rel="apple-touch-icon" href="images/logo-512.png">
     <script src="js/theme.js"></script>
+    <!-- Start loading fonts and page parts early, they are needed right away (js/loader.js) -->
+    <link rel="preload" href="fonts/open-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/montserrat-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="components/header.html" as="fetch" crossorigin>
+    <link rel="preload" href="components/footer.html" as="fetch" crossorigin>
     <link rel="stylesheet" href="css/style.css">
     <script src="js/loader.js" defer></script>
     <script src="js/script.js" defer></script>

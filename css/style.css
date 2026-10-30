@@ -189,6 +189,26 @@ body {
     min-height: 100dvh;
 }
 
+/* Loading: theme.js sets "js", loader.js sets "is-ready" once header, footer and
+   fonts are in place. Until then the page stays invisible and then fades in,
+   instead of jumping around while the parts arrive. Without JavaScript the
+   class "js" is missing and the page is shown normally */
+.js:not(.is-ready) body {
+    opacity: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .js.is-ready body {
+        animation: page-fade-in 0.25s ease-out;
+    }
+}
+
+@keyframes page-fade-in {
+    from {
+        opacity: 0;
+    }
+}
+
 /* Page rhythm: space before the footer on every page.
    width: 100% because in a flex column, margin-inline: auto (.container)
    would otherwise shrink <main> to the width of its content */

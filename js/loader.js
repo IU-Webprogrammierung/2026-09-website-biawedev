@@ -33,5 +33,16 @@ function markCurrentPage(container) {
     });
 }
 
-loadComponent('#site-header', 'components/header.html');
-loadComponent('#site-footer', 'components/footer.html');
+// Reveals the page once header, footer and fonts are there (or after 1 s at the
+// latest), so it appears in one piece instead of building up piece by piece.
+// Without this the content would jump down when the header is inserted.
+const fontsReady = Promise.race([
+    document.fonts.ready,
+    new Promise(resolve => setTimeout(resolve, 1000))
+]);
+
+Promise.all([
+    loadComponent('#site-header', 'components/header.html'),
+    loadComponent('#site-footer', 'components/footer.html'),
+    fontsReady
+]).then(() => document.documentElement.classList.add('is-ready'));
