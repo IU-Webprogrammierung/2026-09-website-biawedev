@@ -181,6 +181,48 @@
                         <button class="card__button button button--secondary" type="button" aria-haspopup="dialog" data-dialog="dialog-jalapeno">Mehr erfahren<span class="visually-hidden"> zu Jalapeño</span></button>
                     </article>
                 </li>
+                <li>
+                    <article class="card">
+                        <img class="card__image" src="images/variety-rocoto.jpg" alt="Zwei ganze und zwei halbierte rote Rocoto-Schoten mit schwarzen Samen auf einem Holzbrett" width="800" height="600" loading="lazy">
+                        <h3 class="card__title">Rocoto</h3>
+                        <p class="card__species"><i lang="la">Capsicum pubescens</i></p>
+                        <p class="card__text">Saftig und dickfleischig, fast wie ein kleiner Paprika, aber deutlich schärfer. Typisch sind die schwarzen Samen.</p>
+                        <p class="card__heat">
+                            <label for="heat-rocoto">Schärfe</label>
+                            <meter id="heat-rocoto" min="0" max="5" value="4">4 von 5</meter>
+                        </p>
+                        <p class="badge">Anden</p>
+                        <button class="card__button button button--secondary" type="button" aria-haspopup="dialog" data-dialog="dialog-rocoto">Mehr erfahren<span class="visually-hidden"> zu Rocoto</span></button>
+                    </article>
+                </li>
+                <li>
+                    <article class="card">
+                        <img class="card__image" src="images/variety-tabasco.jpg" alt="Üppiger Tabasco-Strauch mit vielen kleinen gelben, orangefarbenen und roten Schoten" width="800" height="600" loading="lazy">
+                        <h3 class="card__title">Tabasco</h3>
+                        <p class="card__species"><i lang="la">Capsicum frutescens</i></p>
+                        <p class="card__text">Scharf mit rauchig-herber Note. Die kleinen Schoten stehen aufrecht und sind die Grundlage der berühmten Tabasco-Sauce.</p>
+                        <p class="card__heat">
+                            <label for="heat-tabasco">Schärfe</label>
+                            <meter id="heat-tabasco" min="0" max="5" value="3">3 von 5</meter>
+                        </p>
+                        <p class="badge">Mexiko</p>
+                        <button class="card__button button button--secondary" type="button" aria-haspopup="dialog" data-dialog="dialog-tabasco">Mehr erfahren<span class="visually-hidden"> zu Tabasco</span></button>
+                    </article>
+                </li>
+                <li>
+                    <article class="card">
+                        <img class="card__image" src="images/variety-thai-chili.jpg" alt="Haufen kleiner grüner, orangefarbener und roter Thai-Chilis" width="800" height="600" loading="lazy">
+                        <h3 class="card__title">Thai-Chili</h3>
+                        <p class="card__species"><i lang="la">Capsicum annuum</i></p>
+                        <p class="card__text">Klein, aber sehr scharf mit klarer, frischer Schärfe. Unverzichtbar in Currys, Salaten und Sambal.</p>
+                        <p class="card__heat">
+                            <label for="heat-thai-chili">Schärfe</label>
+                            <meter id="heat-thai-chili" min="0" max="5" value="4">4 von 5</meter>
+                        </p>
+                        <p class="badge">Südostasien</p>
+                        <button class="card__button button button--secondary" type="button" aria-haspopup="dialog" data-dialog="dialog-thai-chili">Mehr erfahren<span class="visually-hidden"> zu Thai-Chili</span></button>
+                    </article>
+                </li>
             </ul>
         </section>
 
@@ -282,6 +324,66 @@
             <div class="dialog__note">
                 <h3>Anbautipp</h3>
                 <p>Jalapeños sind robust und tragen früh und reichlich. Sie kommen auch mit Balkon und größeren Kübeln gut zurecht und verzeihen kleine Pflegefehler.</p>
+            </div>
+        </detail-dialog>
+
+        <detail-dialog id="dialog-rocoto" heading="Rocoto" image="images/variety-rocoto.jpg" image-alt="Zwei ganze und zwei halbierte rote Rocoto-Schoten mit schwarzen Samen auf einem Holzbrett">
+            <p>Die Rocoto stammt aus den Anden und gehört zu den wenigen Chilis, die Kühle gut vertragen. Ihre apfelförmigen Früchte haben dickes, saftiges Fruchtfleisch und auffällig schwarze Samen. Die Schärfe schwankt von Frucht zu Frucht stark.</p>
+            <dl>
+                <dt>Art</dt>
+                <dd><i lang="la">Capsicum pubescens</i></dd>
+                <dt>Herkunft</dt>
+                <dd>Anden (Peru, Bolivien, Ecuador)</dd>
+                <dt>Schärfe</dt>
+                <dd class="dialog__heat"><meter min="0" max="5" value="4" aria-hidden="true"></meter><span>4 von 5, etwa 50.000 bis 250.000 SHU</span></dd>
+                <dt>Wuchs</dt>
+                <dd>Kräftig und mehrjährig, im Kübel etwa 1,5 bis 2 m hoch</dd>
+                <dt>Verwendung</dt>
+                <dd>Gefüllt und überbacken (Rocoto relleno), Pasten, frische Salsas</dd>
+            </dl>
+            <div class="dialog__note">
+                <h3>Anbautipp</h3>
+                <p>Die Rocoto braucht eine lange Vegetationszeit und verträgt keinen Frost. Säe sie früh aus und überwintere sie hell und kühl, so trägt sie auch im nächsten Jahr. Mehr dazu findest du unter <a href="growing.html">Anbau</a>.</p>
+            </div>
+        </detail-dialog>
+
+        <detail-dialog id="dialog-tabasco" heading="Tabasco" image="images/variety-tabasco.jpg" image-alt="Üppiger Tabasco-Strauch mit vielen kleinen gelben, orangefarbenen und roten Schoten">
+            <p>Die Tabasco ist nach dem mexikanischen Bundesstaat benannt und vor allem durch die gleichnamige Sauce bekannt. Die kleinen Schoten stehen aufrecht am Strauch und reifen von blassgrün über gelb und orange zu leuchtend rot.</p>
+            <dl>
+                <dt>Art</dt>
+                <dd><i lang="la">Capsicum frutescens</i></dd>
+                <dt>Herkunft</dt>
+                <dd>Mexiko (Bundesstaat Tabasco)</dd>
+                <dt>Schärfe</dt>
+                <dd class="dialog__heat"><meter min="0" max="5" value="3" aria-hidden="true"></meter><span>3 von 5, etwa 30.000 bis 50.000 SHU</span></dd>
+                <dt>Wuchs</dt>
+                <dd>Buschig, bis etwa 150 cm hoch</dd>
+                <dt>Verwendung</dt>
+                <dd>Scharfe Saucen, Würzessig, Eintöpfe</dd>
+            </dl>
+            <div class="dialog__note">
+                <h3>Anbautipp</h3>
+                <p>Eine Pflanze trägt sehr viele Schoten gleichzeitig. Die bunte Reife macht sie auch im Kübel zu einem schönen Anblick. Für die Sauce solltest du die Schoten voll ausgereift ernten.</p>
+            </div>
+        </detail-dialog>
+
+        <detail-dialog id="dialog-thai-chili" heading="Thai-Chili" image="images/variety-thai-chili.jpg" image-alt="Haufen kleiner grüner, orangefarbener und roter Thai-Chilis">
+            <p>Die Thai-Chili, auch Bird's Eye genannt, ist klein und schlank, hat aber ordentlich Feuer. Sie wird in ganz Südostasien angebaut und gehört in viele Currys, Suppen und Salate. Ihre Schärfe setzt schnell ein und klingt auch rasch wieder ab.</p>
+            <dl>
+                <dt>Art</dt>
+                <dd><i lang="la">Capsicum annuum</i></dd>
+                <dt>Herkunft</dt>
+                <dd>Südostasien</dd>
+                <dt>Schärfe</dt>
+                <dd class="dialog__heat"><meter min="0" max="5" value="4" aria-hidden="true"></meter><span>4 von 5, etwa 50.000 bis 100.000 SHU</span></dd>
+                <dt>Wuchs</dt>
+                <dd>Buschig, etwa 60 bis 100 cm hoch</dd>
+                <dt>Verwendung</dt>
+                <dd>Currys, Suppen, Salate, Sambal, Dips</dd>
+            </dl>
+            <div class="dialog__note">
+                <h3>Anbautipp</h3>
+                <p>Die Pflanze mag es warm und sonnig und trägt viele kleine Schoten. Frisch halten sie sich nur kurz, getrocknet dagegen lange. Wie das geht, steht unter <a href="harvest.html">Ernte und Verarbeitung</a>.</p>
             </div>
         </detail-dialog>
     </main>

@@ -47,7 +47,7 @@ Barrierefreiheit nach WCAG 2.1 und WAI-ARIA.
 | :--- | :--- | :--- |
 | `index.html` | Startseite | Hero mit Begrüßung, kurzer Vorstellung und Links zum Anbau-Guide und zu den Chilisorten; Zeitleiste zur Geschichte der Chilis; „Warum sind Chilis scharf?“ |
 | `growing.html` | Anbau | 6 Anbauphasen von der Aussaat bis zum Überwintern, Pflege während der Saison (Licht, Gießen, Düngen), Aussaat- und Erntekalender |
-| `varieties.html` | Chilisorten | Die fünf kultivierten Chili-Arten; fünf Sorten im Porträt (alphabetisch) mit Schärfeanzeige und Herkunft |
+| `varieties.html` | Chilisorten | Die fünf kultivierten Chili-Arten; acht Sorten im Porträt (alphabetisch) mit Schärfeanzeige und Herkunft |
 | `harvest.html` | Ernte & Verarbeitung | 6 Verarbeitungsmethoden: frisch, trocknen, Flocken, Pulver, Öl, Hot Sauce |
 | `about.html` | Über mich / Kontakt | Geschichte hinter der Website, Kontaktwege, Kontaktformular |
 | `impressum.html` | Impressum | Angaben gemäß § 5 DDG, Kontakt, Haftungsausschluss |
@@ -187,13 +187,18 @@ Sie wurden auf 800 × 600 px (4:3) zugeschnitten, das Hero-Bild zusätzlich auf
 
 ### Fotos unter Creative-Commons-Lizenz
 
-Diese Fotos stammen von [Wikimedia Commons](https://commons.wikimedia.org/) und dürfen
-nur mit Namensnennung und Angabe der Lizenz verwendet werden.
+Diese Fotos stammen von [Wikimedia Commons](https://commons.wikimedia.org/). Bei den
+CC-BY-Lizenzen ist die Namensnennung samt Lizenzangabe Pflicht, bei CC BY-SA müssen
+bearbeitete Fassungen zusätzlich unter derselben Lizenz stehen. Gemeinfreie und CC0-Fotos
+sind unbeschränkt nutzbar und hier nur der Vollständigkeit halber aufgeführt.
 Sie wurden auf 800 × 600 px (4:3) zugeschnitten und verkleinert.
 
 | Datei | Foto | Urheber/in | Lizenz |
 |---|---|---|---|
 | `variety-aji-amarillo.jpg` | [Aji amarillo flickr](https://commons.wikimedia.org/wiki/File:Aji_amarillo_flickr.jpg) | Marianne Serra | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) |
+| `variety-rocoto.jpg` | [Capsicum pubescens (Rocoto)](https://commons.wikimedia.org/wiki/File:Capsicum_pubescens_(Rocoto).JPG) | Falcodigiada | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) |
+| `variety-tabasco.jpg` | [Tabasco pepper Nov 2010](https://commons.wikimedia.org/wiki/File:Tabasco_pepper_Nov_2010.JPG) | Supportstorm | gemeinfrei |
+| `variety-thai-chili.jpg` | [Bird's eye chili](https://commons.wikimedia.org/wiki/File:Bird%27s_eye_chili.jpg) | Jiafei Slay Queen | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) |
 
 ## Autor
 
