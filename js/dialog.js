@@ -1,4 +1,6 @@
 // <detail-dialog id="dialog-sowing" heading="Aussaat" image="images/growing-sowing.jpg" image-alt="…"> … </detail-dialog>
+// The optional image-position (CSS object-position, e.g. "50% 30%") moves
+// the visible part of the photo.
 //
 // Web component for the detail windows. The page only writes the content,
 // the component wraps it in the <dialog> structure (title, close button,
@@ -49,6 +51,9 @@ class Dialog extends HTMLElement {
             image.width = 800;
             image.height = 600;
             image.loading = 'lazy';
+        if (this.hasAttribute('image-position')) {
+            image.style.objectPosition = this.getAttribute('image-position');
+        }
             article.append(image);
         }
 
@@ -63,16 +68,26 @@ class Dialog extends HTMLElement {
             article.append(pager);
         }
 
+        this.dialog.addEventListener('keydown', event => this.handleKeydown(event));
+        this.enableSwipeToClose();
+        // Fires when the dialog opens and when the window size changes; the
+        // timeout keeps the class change out of the observer callback
+        new ResizeObserver(() => setTimeout(() => this.updateScrollbar())).observe(this.dialog);
+
         this.replaceChildren(this.dialog);
     }
 
-    // "Back" and "next" in page order. The neighbours may not be upgraded
-    // yet, so only their attributes are read. A single dialog gets none
-    createPager() {
+    // The dialog before (-1) or after (1) this one in page order, if any.
+    // It may not be upgraded yet, so only its attributes can be read
+    neighbour(offset) {
         const all = [...document.querySelectorAll('detail-dialog')];
-        const index = all.indexOf(this);
-        const previous = all[index - 1];
-        const next = all[index + 1];
+        return all[all.indexOf(this) + offset];
+    }
+
+    // "Back" and "next" buttons. A single dialog on a page gets none
+    createPager() {
+        const previous = this.neighbour(-1);
+        const next = this.neighbour(1);
 
         if (!previous && !next) {
             return null;
@@ -122,6 +137,85 @@ class Dialog extends HTMLElement {
         this.close();
         document.querySelector(`[data-dialog="${target.id}"]`)?.focus({ preventScroll: true });
         target.showModal();
+    }
+
+    // Shows the scrollbar (class for style.css) only if clearly more is hidden
+    // than the bottom padding, see the comment there. The scrollbar makes the
+    // content narrower, so the image gets lower and less is hidden: once it
+    // is shown it stays until the overflow is 6px below the limit, otherwise
+    // the two measurements would switch it on and off in turn
+    updateScrollbar() {
+        const article = this.dialog.querySelector('article');
+        const padding = parseFloat(getComputedStyle(article).paddingBottom);
+        const hidden = this.dialog.scrollHeight - this.dialog.clientHeight;
+        const limit = this.dialog.classList.contains('dialog--scrolls') ? padding * 1.5 - 6 : padding * 1.5;
+
+        this.dialog.classList.toggle('dialog--scrolls', hidden > limit);
+    }
+
+    // Arrow keys switch like the buttons. With a modifier they are left to
+    // the browser (Alt+← is "back")
+    handleKeydown(event) {
+        if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) {
+            return;
+        }
+
+        const target = {
+            ArrowLeft: this.neighbour(-1),
+            ArrowRight: this.neighbour(1),
+        }[event.key];
+
+        if (target) {
+            this.switchTo(target);
+        }
+    }
+
+    // Bottom sheet (below 768px, see style.css): the title bar can be
+    // dragged down and closes the dialog from 100px on, otherwise it snaps back
+    enableSwipeToClose() {
+        const header = this.dialog.querySelector('.dialog__header');
+        const desktop = window.matchMedia('(min-width: 768px)');
+        let startY = null;
+        let distance = 0;
+
+        header.addEventListener('pointerdown', event => {
+            if (desktop.matches || event.target.closest('button')) {
+                return;
+            }
+
+            startY = event.clientY;
+            distance = 0;
+            header.setPointerCapture(event.pointerId);
+            // The dialog follows the finger without the transition from style.css
+            this.dialog.style.transition = 'none';
+        });
+
+        header.addEventListener('pointermove', event => {
+            if (startY === null) {
+                return;
+            }
+
+            distance = Math.max(0, event.clientY - startY);
+            this.dialog.style.transform = `translateY(${distance}px)`;
+        });
+
+        // With the inline styles gone, the transition from style.css animates
+        // both the snap back and the closing from the current position
+        const release = () => {
+            if (startY === null) {
+                return;
+            }
+
+            startY = null;
+            this.dialog.style.transition = '';
+            this.dialog.style.transform = '';
+            if (distance > 100) {
+                this.dialog.close();
+            }
+        };
+
+        header.addEventListener('pointerup', release);
+        header.addEventListener('pointercancel', release);
     }
 
     // Same names as on <dialog>, so script.js can treat both alike
