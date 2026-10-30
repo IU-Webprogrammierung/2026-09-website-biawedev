@@ -840,10 +840,12 @@ detail-dialog:not(:defined) {
     padding: 0 var(--space-m) var(--space-m);
 }
 
-/* Title and close button stay visible while the content scrolls */
+/* Title and close button stay visible while the content scrolls. The
+   z-index keeps positioned content (numbered steps) below the header */
 .dialog__header {
     position: sticky;
     top: 0;
+    z-index: 1;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -975,6 +977,26 @@ detail-dialog:not(:defined) {
     flex-wrap: wrap;
     align-items: center;
     gap: var(--space-xs) var(--space-m);
+}
+
+/* "Back" / "next" to the neighbouring dialogs. Each button takes at most
+   half of the row, long titles wrap; a single button sits on its side */
+.dialog__pager {
+    display: flex;
+    gap: var(--space-m);
+    margin-top: var(--space-l);
+    padding-top: var(--space-m);
+    border-top: 1px solid var(--color-border);
+}
+
+.dialog__pager-button {
+    max-width: calc(50% - var(--space-s));
+    gap: var(--space-xs);
+    padding-inline: var(--space-s);
+}
+
+.dialog__pager-button--next {
+    margin-left: auto;
 }
 
 /* Profiles (variety dialogs, chili species): term and value side by side */
