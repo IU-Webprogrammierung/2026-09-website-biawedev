@@ -822,6 +822,12 @@ body:has(dialog[open]) {
     overflow: hidden;
 }
 
+/* Before dialog.js has built the <dialog>, the raw content must not
+   show up in the page (the script is deferred) */
+detail-dialog:not(:defined) {
+    display: none;
+}
+
 .dialog__content {
     padding: 0 var(--space-m) var(--space-m);
 }

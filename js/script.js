@@ -57,7 +57,7 @@ document.addEventListener('click', event => {
 // gets the state of the theme that theme.js already applied
 document.addEventListener('componentloaded', syncThemeToggle);
 
-// Detail dialogs: each "Mehr erfahren" button names its dialog in
+// Detail dialogs (web component, see dialog.js): each "Mehr erfahren" button names its dialog in
 // data-dialog. showModal() makes it a real modal: focus stays inside, the
 // page behind is inert, Esc and the close button work without extra code
 document.addEventListener('click', event => {
