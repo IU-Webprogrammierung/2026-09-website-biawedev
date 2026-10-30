@@ -1595,6 +1595,35 @@ detail-dialog:not(:defined) {
     }
 }
 
+/* --- Varieties: fun fact ------------------------------------------------ */
+
+/* Orange tinted box with a colored edge, like the notes in the dialogs. The
+   title names the kind of box, so color is not the only signal */
+.fun-fact {
+    margin-block: var(--space-l);
+    padding: var(--space-m);
+    background-color: color-mix(in srgb, var(--color-accent) 14%, var(--color-surface));
+    border-left: 0.25rem solid var(--color-accent);
+    border-radius: 0 0.5rem 0.5rem 0;
+    break-inside: avoid;
+}
+
+.fun-fact__title {
+    margin: 0 0 var(--space-s);
+    font-family: var(--font-heading);
+    font-weight: 700;
+}
+
+.fun-fact > :last-child {
+    margin-bottom: 0;
+}
+
+/* The species list brings its own top margin (64px). After the box the same
+   gap as above it is enough, otherwise the two margins make a big hole */
+.fun-fact + .species {
+    margin-top: var(--space-l);
+}
+
 /* --- Varieties: chili species ------------------------------------------- */
 
 /* Mobile and tablet (< 1200px): accordion, one <details> per species.
