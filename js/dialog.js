@@ -119,16 +119,29 @@ class Dialog extends HTMLElement {
         hidden.className = 'visually-hidden';
         hidden.textContent = `${label}: `;
 
-        const arrow = document.createElement('span');
-        arrow.setAttribute('aria-hidden', 'true');
-        arrow.textContent = isNext ? '→' : '←';
+        const arrow = this.createArrow(isNext);
 
         const title = document.createTextNode(target.getAttribute('heading'));
 
-        button.append(...(isNext ? [hidden, title, ' ', arrow] : [arrow, ' ', hidden, title]));
+        button.append(...(isNext ? [hidden, title, arrow] : [arrow, hidden, title]));
         button.addEventListener('click', () => this.switchTo(target));
 
         return button;
+    }
+
+    // Chevron as inline SVG
+    createArrow(isNext) {
+        const namespace = 'http://www.w3.org/2000/svg';
+        const arrow = document.createElementNS(namespace, 'svg');
+        arrow.setAttribute('class', 'dialog__pager-icon');
+        arrow.setAttribute('viewBox', '0 0 24 24');
+        arrow.setAttribute('aria-hidden', 'true');
+
+        const path = document.createElementNS(namespace, 'path');
+        path.setAttribute('d', isNext ? 'M9 5l7 7-7 7' : 'M15 5l-7 7 7 7');
+        arrow.append(path);
+
+        return arrow;
     }
 
     // The focus goes to the card button of the new dialog first, so closing
