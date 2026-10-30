@@ -56,6 +56,7 @@ document.addEventListener('click', event => {
 // The header only exists after loader.js has fetched it, then the button
 // gets the state of the theme that theme.js already applied
 document.addEventListener('componentloaded', syncThemeToggle);
+syncThemeToggle();
 
 // Detail dialogs (web component, see dialog.js): each "Mehr erfahren" button names its dialog in
 // data-dialog. showModal() makes it a real modal: focus stays inside, the
