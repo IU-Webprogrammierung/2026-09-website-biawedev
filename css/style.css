@@ -41,6 +41,8 @@
     --color-border: #E6DCC6;        /* thin dividers, decoration only */
     --color-muted: #74655A;         /* form field borders, placeholders (5.6:1) */
     --color-focus: #2B2118;
+    --color-terracotta: #8D4B2B;    /* decoration only (stripe of the chili species) */
+    --color-violet: #6A3FA0;        /* decoration only (stripe of the chili species) */
 
     /* Typography */
     --font-heading: "Montserrat", "Poppins", system-ui, sans-serif;
@@ -76,6 +78,8 @@
     --color-border: #4A403A;
     --color-muted: #A8998B;         /* (5.5:1) on the dark surface */
     --color-focus: #F5EEDC;
+    --color-terracotta: #D08A63;
+    --color-violet: #B79CE0;
 
     color-scheme: dark;
 }
@@ -1493,11 +1497,42 @@ detail-dialog:not(:defined) {
 
 /* --- Varieties: chili species ------------------------------------------- */
 
-/* Mobile and tablet (< 1200px): accordion, one <details> per species */
+/* Mobile and tablet (< 1200px): accordion, one <details> per species.
+   Every species has its own color (--species-color) for the stripe and the
+   number. It is decoration only, so it is never used for text */
+.species {
+    counter-reset: species;
+}
+
 .species__item {
+    --species-color: var(--color-primary);
+    counter-increment: species;
     background-color: var(--color-surface);
     border: 1px solid var(--color-border);
+    border-left: 0.25rem solid var(--species-color);
     border-radius: 0.75rem;
+}
+
+/* Colors in the order of the HTML. The <h2> is another element type, so
+   nth-of-type only counts the <details> */
+.species__item:nth-of-type(1) {
+    --species-color: var(--color-secondary);
+}
+
+.species__item:nth-of-type(2) {
+    --species-color: var(--color-primary);
+}
+
+.species__item:nth-of-type(3) {
+    --species-color: var(--color-accent);
+}
+
+.species__item:nth-of-type(4) {
+    --species-color: var(--color-terracotta);
+}
+
+.species__item:nth-of-type(5) {
+    --species-color: var(--color-violet);
 }
 
 .species__item + .species__item {
@@ -1508,7 +1543,6 @@ detail-dialog:not(:defined) {
 .species__item summary {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     gap: var(--space-m);
     min-height: 2.75rem;
     padding: var(--space-s) var(--space-m);
@@ -1518,18 +1552,31 @@ detail-dialog:not(:defined) {
     cursor: pointer;
 }
 
+/* Number 01–05 in front of the title. The second "content" line marks it as
+   decoration for screen readers; the first one is for browsers that do not
+   know the "/ alt text" syntax yet */
+.species__item summary::before {
+    content: counter(species, decimal-leading-zero);
+    content: counter(species, decimal-leading-zero) / "";
+    flex-shrink: 0;
+    font-weight: 700;
+    color: var(--color-muted);
+}
+
 /* Hide the default triangle (Safari still uses this pseudo-element) */
 .species__item summary::-webkit-details-marker {
     display: none;
 }
 
 /* Own marker: a chevron drawn with two borders, it points down when closed
-   and turns up when open. Empty content, so screen readers ignore it */
+   and turns up when open. Empty content, so screen readers ignore it.
+   margin-left: auto pushes it to the right end of the row */
 .species__item summary::after {
     content: "";
     flex-shrink: 0;
     width: 0.5rem;
     height: 0.5rem;
+    margin-left: auto;
     border-right: 2px solid currentColor;
     border-bottom: 2px solid currentColor;
     transform: rotate(45deg);
@@ -1545,8 +1592,92 @@ detail-dialog:not(:defined) {
 }
 
 .species__item dl {
+    align-items: baseline;
     margin: 0;
     padding: 0 var(--space-m) var(--space-m);
+}
+
+/* One line of character under the title, above the profile */
+.species__tagline {
+    margin: 0;
+    padding: 0 var(--space-m) var(--space-m);
+}
+
+/* Profile: small gray label, normal value. That way label and content are
+   easy to tell apart (the base rule at the dialogs only makes dt bold) */
+.species__item dt {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+}
+
+/* Examples as a plain list with a dot in the color of the species. The dot
+   is drawn with a thick border, because backgrounds do not print */
+.species__examples {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.species__examples li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-s);
+}
+
+.species__examples li::before {
+    content: "";
+    flex-shrink: 0;
+    box-sizing: border-box;
+    width: 0.5rem;
+    height: 0.5rem;
+    border: 0.25rem solid var(--species-color);
+    border-radius: 50%;
+}
+
+/* With no motion preference the card lifts a little under the mouse (not on
+   touch screens, where there is no hover) */
+@media (prefers-reduced-motion: no-preference) {
+    .species__item {
+        transition:
+            transform var(--duration-enter) var(--ease-out),
+            box-shadow var(--duration-enter) var(--ease-out);
+    }
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .species__item:hover {
+        transform: translateY(-0.25rem);
+        box-shadow: 0 0.5rem 1.25rem rgb(0 0 0 / 0.12);
+    }
+
+    [data-theme="dark"] .species__item:hover {
+        box-shadow: 0 0.5rem 1.25rem rgb(0 0 0 / 0.4);
+    }
+}
+
+/* Accordion (< 1200px) with no motion preference: the content slides open
+   instead of jumping. Browsers without ::details-content / interpolate-size
+   ignore this and open instantly as before. Not on the desktop: there
+   script.js opens all cards right after loading, that must not animate */
+@media (max-width: 1199.98px) and (prefers-reduced-motion: no-preference) {
+    .species__item {
+        interpolate-size: allow-keywords;
+    }
+
+    .species__item::details-content {
+        block-size: 0;
+        overflow: hidden;
+        transition:
+            block-size 250ms var(--ease-out),
+            content-visibility 250ms allow-discrete;
+    }
+
+    .species__item[open]::details-content {
+        block-size: auto;
+    }
 }
 
 /* Desktop (≥ 1200px): five cards side by side, all open (script.js sets
@@ -1562,12 +1693,29 @@ detail-dialog:not(:defined) {
         grid-column: 1 / -1;
     }
 
+    /* Stripe on top instead of at the left */
+    .species__item {
+        border-left: 1px solid var(--color-border);
+        border-top: 0.25rem solid var(--species-color);
+    }
+
     .species__item + .species__item {
         margin-top: 0;
     }
 
+    /* Big number above the title */
     .species__item summary {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
         cursor: default;
+    }
+
+    .species__item summary::before {
+        font-size: 2.5rem;
+        font-weight: 800;
+        line-height: 1;
+        color: var(--species-color);
     }
 
     .species__item summary::after {
