@@ -629,6 +629,20 @@ main > h1 ~ section {
     background-color: var(--color-primary);
 }
 
+/* Icon in front of the label: drawn with the text color, so it follows hover
+   and dark mode; decorative only (aria-hidden), the label says what it is */
+.button__icon {
+    flex: none;
+    width: 1.25em;
+    height: 1.25em;
+    margin-right: var(--space-s);
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
 /* Row of buttons in a list: wraps to a new line when space runs out (360px) */
 .button-group {
     display: flex;
@@ -1902,6 +1916,10 @@ main > .legal-section {
         min-height: 0;
         padding: 0;
         border: 0;
+    }
+
+    .contact-details__list .button__icon {
+        display: none;
     }
 
     /* Nothing opens or closes on paper: no chevron on the species */
