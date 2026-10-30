@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="js/loader.js" defer></script>
     <script src="js/script.js" defer></script>
+    <script src="js/dialog.js" defer></script>
 </head>
 <body>
     <!-- Skip link: lets keyboard users jump past the navigation -->
@@ -257,136 +258,94 @@
         </section>
 
         <!-- Modals: details on the growing phases, opened by the buttons with data-dialog -->
-        <dialog id="dialog-sowing" aria-labelledby="dialog-sowing-title">
-            <article class="dialog__content">
-                <header class="dialog__header">
-                    <h2 id="dialog-sowing-title">Aussaat</h2>
-                    <form method="dialog">
-                        <button class="dialog__close" type="submit" aria-label="Schließen">✕</button>
-                    </form>
-                </header>
-                <p>Zwischen Januar und März startet das Chili-Jahr. Scharfe Sorten wie Habanero brauchen die längste Zeit und kommen als Erstes in die Erde.</p>
-                <h3>So geht’s</h3>
-                <ol>
-                    <li>Anzuchtschalen oder kleine Töpfe mit nährstoffarmer Anzuchterde füllen und leicht andrücken.</li>
-                    <li>Samen etwa 0,5 bis 1 cm tief einlegen und dünn mit Erde bedecken.</li>
-                    <li>Mit einer Sprühflasche anfeuchten und die Schale mit einer Haube oder Folie abdecken.</li>
-                    <li>An einen warmen Platz mit etwa 25 bis 28 °C stellen und Sorte sowie Datum beschriften.</li>
-                </ol>
+        <detail-dialog id="dialog-sowing" heading="Aussaat" image="images/growing-sowing.jpg" image-alt="Anzuchtschale mit Erde, davor Samentüten verschiedener Chili-Sorten">
+            <p>Zwischen Januar und März startet das Chili-Jahr. Scharfe Sorten wie Habanero brauchen die längste Zeit und kommen als Erstes in die Erde.</p>
+            <h3>So geht’s</h3>
+            <ol>
+                <li>Anzuchtschalen oder kleine Töpfe mit nährstoffarmer Anzuchterde füllen und leicht andrücken.</li>
+                <li>Samen etwa 0,5 bis 1 cm tief einlegen und dünn mit Erde bedecken.</li>
+                <li>Mit einer Sprühflasche anfeuchten und die Schale mit einer Haube oder Folie abdecken.</li>
+                <li>An einen warmen Platz mit etwa 25 bis 28 °C stellen und Sorte sowie Datum beschriften.</li>
+            </ol>
+            <div class="dialog__note">
                 <h3>Gut zu wissen</h3>
                 <ul>
                     <li>Frisches Saatgut keimt zuverlässiger als altes.</li>
                     <li>Pro Topf lieber zwei Samen einlegen, falls einer nicht aufgeht.</li>
                 </ul>
-            </article>
-        </dialog>
+            </div>
+        </detail-dialog>
 
-        <dialog id="dialog-germination" aria-labelledby="dialog-germination-title">
-            <article class="dialog__content">
-                <header class="dialog__header">
-                    <h2 id="dialog-germination-title">Keimung</h2>
-                    <form method="dialog">
-                        <button class="dialog__close" type="submit" aria-label="Schließen">✕</button>
-                    </form>
-                </header>
-                <p>Chilis keimen langsam. Je nach Sorte dauert es etwa ein bis vier Wochen, bis sich die ersten Keimlinge zeigen. Scharfe Sorten lassen sich am meisten Zeit. Nicht nervös werden!</p>
-                <h3>Worauf es ankommt</h3>
-                <ul>
-                    <li><strong>Wärme:</strong> Die Erde sollte dauerhaft bei 25 bis 28 °C liegen. Eine Heizmatte hilft sehr.</li>
-                    <li><strong>Feuchtigkeit:</strong> Die Erde gleichmäßig feucht, aber nicht nass halten.</li>
-                    <li><strong>Licht:</strong> Sobald die Keimlinge durchbrechen, kommt die Abdeckung ab und die Schale an einen möglichst hellen Platz.</li>
-                </ul>
-                <p>Die ersten beiden Blätter sind die Keimblätter. Erst danach wachsen die echten Laubblätter, die der späteren Pflanze ähneln.</p>
-            </article>
-        </dialog>
+        <detail-dialog id="dialog-germination" heading="Keimung" image="images/growing-germination.jpg" image-alt="Junge Chili-Keimlinge in Anzuchttöpfchen aus Torf">
+            <p>Chilis keimen langsam. Je nach Sorte dauert es etwa ein bis vier Wochen, bis sich die ersten Keimlinge zeigen. Scharfe Sorten lassen sich am meisten Zeit. Nicht nervös werden!</p>
+            <h3>Worauf es ankommt</h3>
+            <ul>
+                <li><strong>Wärme:</strong> Die Erde sollte dauerhaft bei 25 bis 28 °C liegen. Eine Heizmatte hilft sehr.</li>
+                <li><strong>Feuchtigkeit:</strong> Die Erde gleichmäßig feucht, aber nicht nass halten.</li>
+                <li><strong>Licht:</strong> Sobald die Keimlinge durchbrechen, kommt die Abdeckung ab und die Schale an einen möglichst hellen Platz.</li>
+            </ul>
+            <p>Die ersten beiden Blätter sind die Keimblätter. Erst danach wachsen die echten Laubblätter, die der späteren Pflanze ähneln.</p>
+        </detail-dialog>
 
-        <dialog id="dialog-repotting" aria-labelledby="dialog-repotting-title">
-            <article class="dialog__content">
-                <header class="dialog__header">
-                    <h2 id="dialog-repotting-title">Pikieren & Umtopfen</h2>
-                    <form method="dialog">
-                        <button class="dialog__close" type="submit" aria-label="Schließen">✕</button>
-                    </form>
-                </header>
-                <p>Haben die Jungpflanzen zwei bis drei echte Laubblätter, wird es in der Anzuchtschale zu eng. Jetzt werden sie in Einzeltöpfe pikiert und später in größere Töpfe umgesetzt.</p>
-                <h3>So geht’s</h3>
-                <ol>
-                    <li>Die Erde in der Schale leicht anfeuchten, damit sich die Wurzeln lösen.</li>
-                    <li>Jede Pflanze vorsichtig mit einem Stiel oder Löffel anheben und dabei nur an den Blättern anfassen.</li>
-                    <li>In einen Topf mit lockerer Erde setzen, etwas tiefer als zuvor, und leicht angießen.</li>
-                    <li>Wenn die Wurzeln den Topf ausfüllen, in einen größeren Topf umtopfen.</li>
-                </ol>
+        <detail-dialog id="dialog-repotting" heading="Pikieren & Umtopfen" image="images/growing-repotting.jpg" image-alt="Chili-Setzling in einem kleinen schwarzen Topf">
+            <p>Haben die Jungpflanzen zwei bis drei echte Laubblätter, wird es in der Anzuchtschale zu eng. Jetzt werden sie in Einzeltöpfe pikiert und später in größere Töpfe umgesetzt.</p>
+            <h3>So geht’s</h3>
+            <ol>
+                <li>Die Erde in der Schale leicht anfeuchten, damit sich die Wurzeln lösen.</li>
+                <li>Jede Pflanze vorsichtig mit einem Stiel oder Löffel anheben und dabei nur an den Blättern anfassen.</li>
+                <li>In einen Topf mit lockerer Erde setzen, etwas tiefer als zuvor, und leicht angießen.</li>
+                <li>Wenn die Wurzeln den Topf ausfüllen, in einen größeren Topf umtopfen.</li>
+            </ol>
+            <div class="dialog__note">
                 <h3>Gut zu wissen</h3>
                 <ul>
                     <li>Chilis können beim Umtopfen tiefer gesetzt werden, denn am Stängel bilden sich zusätzliche Wurzeln.</li>
                     <li>Zum Düngen zunächst abwarten, bis die Pflanzen angewachsen sind.</li>
                 </ul>
-            </article>
-        </dialog>
+            </div>
+        </detail-dialog>
 
-        <dialog id="dialog-planting-out" aria-labelledby="dialog-planting-out-title">
-            <article class="dialog__content">
-                <header class="dialog__header">
-                    <h2 id="dialog-planting-out-title">Auspflanzen</h2>
-                    <form method="dialog">
-                        <button class="dialog__close" type="submit" aria-label="Schließen">✕</button>
-                    </form>
-                </header>
-                <p>Chilis sind frostempfindlich. Nach draußen dürfen sie erst nach den Eisheiligen, also ab Mitte Mai, wenn die Nächte dauerhaft wärmer als etwa 10 °C sind.</p>
-                <h3>Abhärten</h3>
-                <p>Etwa ein bis zwei Wochen vorher stellst du die Pflanzen tagsüber für einige Stunden nach draußen, zuerst im Halbschatten, dann in der Sonne. So gewöhnen sie sich an Wind und direkte Sonne und bekommen keinen Sonnenbrand.</p>
-                <h3>Der richtige Platz</h3>
-                <ul>
-                    <li>Sonnig, warm und möglichst windgeschützt.</li>
-                    <li>Im Beet etwa 50 cm Abstand zwischen den Pflanzen lassen.</li>
-                    <li>Im Kübel mindestens 10 bis 15 Liter Erde pro Pflanze einplanen.</li>
-                </ul>
-            </article>
-        </dialog>
+        <detail-dialog id="dialog-planting-out" heading="Auspflanzen" image="images/growing-planting-out.jpg" image-alt="Junge Chilipflanzen in einem Hochbeet im Garten">
+            <p>Chilis sind frostempfindlich. Nach draußen dürfen sie erst nach den Eisheiligen, also ab Mitte Mai, wenn die Nächte dauerhaft wärmer als etwa 10 °C sind.</p>
+            <h3>Abhärten</h3>
+            <p>Etwa ein bis zwei Wochen vorher stellst du die Pflanzen tagsüber für einige Stunden nach draußen, zuerst im Halbschatten, dann in der Sonne. So gewöhnen sie sich an Wind und direkte Sonne und bekommen keinen Sonnenbrand.</p>
+            <h3>Der richtige Platz</h3>
+            <ul>
+                <li>Sonnig, warm und möglichst windgeschützt.</li>
+                <li>Im Beet etwa 50 cm Abstand zwischen den Pflanzen lassen.</li>
+                <li>Im Kübel mindestens 10 bis 15 Liter Erde pro Pflanze einplanen.</li>
+            </ul>
+        </detail-dialog>
 
-        <dialog id="dialog-flowering" aria-labelledby="dialog-flowering-title">
-            <article class="dialog__content">
-                <header class="dialog__header">
-                    <h2 id="dialog-flowering-title">Blüte & Fruchtansatz</h2>
-                    <form method="dialog">
-                        <button class="dialog__close" type="submit" aria-label="Schließen">✕</button>
-                    </form>
-                </header>
-                <p>Von Juni bis August zeigen sich die ersten Blüten. Chilis bestäuben sich selbst. Draußen übernehmen Wind und Insekten die Arbeit, auf dem Balkon hilft vorsichtiges Schütteln der Pflanze.</p>
-                <h3>Pflegearbeiten</h3>
-                <ul>
-                    <li><strong>Ausgeizen:</strong> Die erste Blüte in der Astgabel („Königsblüte“) kann entfernt werden, damit die Pflanze erst kräftig wächst. Auch Triebe in der Astgabel darunter lassen sich entfernen.</li>
-                    <li><strong>Stützen:</strong> Schwer beladene Äste mit einem Stab und weichem Band stützen, damit sie nicht abbrechen.</li>
-                    <li><strong>Düngen:</strong> Jetzt mit kaliumbetontem Dünger versorgen, siehe Abschnitt „Pflege während der Saison“.</li>
-                </ul>
-                <p>Fallen Blüten ab, ist das oft ein Zeichen für Hitzestress oder zu wenig Wasser. Meist erholt sich die Pflanze von selbst.</p>
-            </article>
-        </dialog>
+        <detail-dialog id="dialog-flowering" heading="Blüte & Fruchtansatz" image="images/growing-flowering.jpg" image-alt="Weiße Chilibüte an einer Pflanze mit dunkelgrünen Blättern">
+            <p>Von Juni bis August zeigen sich die ersten Blüten. Chilis bestäuben sich selbst. Draußen übernehmen Wind und Insekten die Arbeit, auf dem Balkon hilft vorsichtiges Schütteln der Pflanze.</p>
+            <h3>Pflegearbeiten</h3>
+            <ul>
+                <li><strong>Ausgeizen:</strong> Die erste Blüte in der Astgabel („Königsblüte“) kann entfernt werden, damit die Pflanze erst kräftig wächst. Auch Triebe in der Astgabel darunter lassen sich entfernen.</li>
+                <li><strong>Stützen:</strong> Schwer beladene Äste mit einem Stab und weichem Band stützen, damit sie nicht abbrechen.</li>
+                <li><strong>Düngen:</strong> Jetzt mit kaliumbetontem Dünger versorgen, siehe Abschnitt „Pflege während der Saison“.</li>
+            </ul>
+            <p>Fallen Blüten ab, ist das oft ein Zeichen für Hitzestress oder zu wenig Wasser. Meist erholt sich die Pflanze von selbst.</p>
+        </detail-dialog>
 
-        <dialog id="dialog-overwintering" aria-labelledby="dialog-overwintering-title">
-            <article class="dialog__content">
-                <header class="dialog__header">
-                    <h2 id="dialog-overwintering-title">Überwintern</h2>
-                    <form method="dialog">
-                        <button class="dialog__close" type="submit" aria-label="Schließen">✕</button>
-                    </form>
-                </header>
-                <p>Chilis sind mehrjährig und können im Haus überwintern. Das spart die Anzucht im nächsten Jahr, und die Pflanzen tragen oft früher und mehr.</p>
-                <h3>So geht’s</h3>
-                <ol>
-                    <li>Vor dem ersten Frost ins Haus holen, am besten im Oktober.</li>
-                    <li>Auf etwa ein Drittel zurückschneiden und alle Früchte abernten.</li>
-                    <li>An einen hellen, kühlen Ort mit etwa 10 bis 15 °C stellen.</li>
-                    <li>Nur sparsam gießen und nicht mehr düngen.</li>
-                    <li>Ab Februar wieder wärmer und heller stellen. Dann treibt die Pflanze neu aus.</li>
-                </ol>
+        <detail-dialog id="dialog-overwintering" heading="Überwintern" image="images/growing-overwintering.jpg" image-alt="Chilipflanze mit roten Schoten in einem Gefäß in der Wohnung" image-position="top">
+            <p>Chilis sind mehrjährig und können im Haus überwintern. Das spart die Anzucht im nächsten Jahr, und die Pflanzen tragen oft früher und mehr.</p>
+            <h3>So geht’s</h3>
+            <ol>
+                <li>Vor dem ersten Frost ins Haus holen, am besten im Oktober.</li>
+                <li>Auf etwa ein Drittel zurückschneiden und alle Früchte abernten.</li>
+                <li>An einen hellen, kühlen Ort mit etwa 10 bis 15 °C stellen.</li>
+                <li>Nur sparsam gießen und nicht mehr düngen.</li>
+                <li>Ab Februar wieder wärmer und heller stellen. Dann treibt die Pflanze neu aus.</li>
+            </ol>
+            <div class="dialog__note">
                 <h3>Gut zu wissen</h3>
                 <ul>
                     <li>Blattläuse mögen warme Räume. Prüfe die Pflanzen deshalb regelmäßig.</li>
                     <li>Bei weniger als 5 °C nehmen die Pflanzen Schaden.</li>
                 </ul>
-            </article>
-        </dialog>
+            </div>
+        </detail-dialog>
     </main>
 
     <!-- Site footer with page links and legal links, content from components/footer.html -->

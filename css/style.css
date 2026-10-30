@@ -672,7 +672,8 @@ main > h1 ~ section {
 /* Heat bar in chili red on a light track (red vs. track at least 3:1, so the
    filled part is visible as a graphic, WCAG 1.4.11). Chrome/Safari and
    Firefox each style the bar with their own pseudo-elements */
-.card__heat meter {
+.card__heat meter,
+.dialog__heat meter {
     width: 6rem;
     height: 0.75rem;
     background: var(--color-border);
@@ -681,7 +682,8 @@ main > h1 ~ section {
     appearance: none;
 }
 
-.card__heat meter::-webkit-meter-bar {
+.card__heat meter::-webkit-meter-bar,
+.dialog__heat meter::-webkit-meter-bar {
     height: 0.75rem;
     background: var(--color-border);
     border: 0;
@@ -692,12 +694,16 @@ main > h1 ~ section {
    states, all of them get the same red */
 .card__heat meter::-webkit-meter-optimum-value,
 .card__heat meter::-webkit-meter-suboptimum-value,
-.card__heat meter::-webkit-meter-even-less-good-value {
+.card__heat meter::-webkit-meter-even-less-good-value,
+.dialog__heat meter::-webkit-meter-optimum-value,
+.dialog__heat meter::-webkit-meter-suboptimum-value,
+.dialog__heat meter::-webkit-meter-even-less-good-value {
     background: var(--color-primary);
     border-radius: 0.375rem;
 }
 
-.card__heat meter::-moz-meter-bar {
+.card__heat meter::-moz-meter-bar,
+.dialog__heat meter::-moz-meter-bar {
     background: var(--color-primary);
     border-radius: 0.375rem;
 }
@@ -750,19 +756,86 @@ main > h1 ~ section {
 
 /* --- Dialogs ------------------------------------------------------------ */
 
-/* Centered card, at most 40rem wide and never taller than the screen; long
-   content (recipes) scrolls inside the dialog.
+/* Mobile (< 768px): bottom sheet, full width at the bottom edge and at most
+   92 % of the screen high; long content (recipes) scrolls inside.
+   margin: auto 0 0 pins it to the bottom (auto on all sides centers it) and
+   max-width has to be reset, the browser style stops modal dialogs a few
+   pixels short of the screen width.
    No padding on the <dialog> itself: every click inside then hits its
    content, and script.js can tell a backdrop click apart */
 dialog {
-    width: min(100% - 2rem, 40rem);
-    max-height: calc(100dvh - 2rem);
+    width: 100%;
+    max-width: 100%;
+    max-height: 92dvh;
+    margin: auto 0 0;
     padding: 0;
     overflow-y: auto;
     color: var(--color-text);
     background-color: var(--color-surface);
     border: 1px solid var(--color-border);
-    border-radius: 0.75rem;
+    border-top: 0.25rem solid var(--color-primary);
+    border-bottom: 0;
+    border-radius: 1rem 1rem 0 0;
+    box-shadow: 0 1rem 3rem rgb(0 0 0 / 0.3);
+}
+
+/* Tablet and desktop (≥ 768px): centered card, at most 40rem wide and never
+   taller than the screen */
+@media (min-width: 768px) {
+    dialog {
+        width: min(100% - 2rem, 40rem);
+        max-width: none;
+        max-height: calc(100dvh - 2rem);
+        margin: auto;
+        border-bottom: 1px solid var(--color-border);
+        border-radius: 0.75rem;
+    }
+}
+
+/* Slim scrollbar: thumb in the muted text color (visible on both themes),
+   no track and no arrow buttons, so only the thumb shows on the dialog
+   surface. Chrome, Edge and Safari are styled with the -webkit- pieces (the
+   arrow buttons of the Windows scrollbar can only be hidden there); as soon
+   as scrollbar-width or scrollbar-color is set, Chrome ignores them, so
+   those two are only for browsers without them (Firefox).
+   The scrollbar is only shown with .dialog--scrolls, which dialog.js sets
+   when clearly more than the bottom padding is hidden. A dialog that
+   overflows by a few pixels would otherwise get a scrollbar with a thumb as
+   long as the track, that moves almost nothing. It still scrolls by wheel,
+   touch and keys */
+dialog:not(.dialog--scrolls)::-webkit-scrollbar {
+    display: none;
+}
+
+dialog::-webkit-scrollbar {
+    width: 0.75rem;
+}
+
+dialog::-webkit-scrollbar-track {
+    margin-block: 0.5rem;
+    background-color: transparent;
+}
+
+dialog::-webkit-scrollbar-thumb {
+    background-color: var(--color-muted);
+    background-clip: padding-box;
+    border: 0.1875rem solid transparent;
+    border-radius: 0.375rem;
+}
+
+dialog::-webkit-scrollbar-button {
+    display: none;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+    dialog {
+        scrollbar-width: none;
+    }
+
+    dialog.dialog--scrolls {
+        scrollbar-width: thin;
+        scrollbar-color: var(--color-muted) transparent;
+    }
 }
 
 /* Dims the page behind the open dialog */
@@ -795,7 +868,8 @@ dialog:not([open])::backdrop {
     }
 }
 
-/* With no motion preference the dialog also grows slightly into place
+/* With no motion preference the dialog also moves: the bottom sheet slides
+   up from the bottom edge, the centered card grows slightly into place
    (from 96 %, never from 0); "reduce motion" keeps only the fade */
 @media (prefers-reduced-motion: no-preference) {
     dialog {
@@ -806,6 +880,18 @@ dialog:not([open])::backdrop {
             overlay var(--duration-enter) allow-discrete;
     }
 
+    dialog:not([open]) {
+        transform: translateY(100%);
+    }
+
+    @starting-style {
+        dialog[open] {
+            transform: translateY(100%);
+        }
+    }
+}
+
+@media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
     dialog:not([open]) {
         transform: scale(0.96);
     }
@@ -822,22 +908,57 @@ body:has(dialog[open]) {
     overflow: hidden;
 }
 
+/* Before dialog.js has built the <dialog>, the raw content must not
+   show up in the page (the script is deferred) */
+detail-dialog:not(:defined) {
+    display: none;
+}
+
 .dialog__content {
     padding: 0 var(--space-m) var(--space-m);
 }
 
-/* Title and close button stay visible while the content scrolls */
+/* Title and close button stay visible while the content scrolls. The
+   z-index keeps positioned content (numbered steps) below the header */
 .dialog__header {
     position: sticky;
     top: 0;
+    z-index: 1;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: var(--space-m);
     margin-inline: calc(-1 * var(--space-m));
-    padding: var(--space-m);
+    padding: 1.5rem var(--space-m) var(--space-m);
     background-color: var(--color-surface);
     border-bottom: 1px solid var(--color-border);
+    /* The browser must not scroll while the bottom sheet is dragged by it */
+    touch-action: none;
+}
+
+/* Handle above the title: shows that the bottom sheet can be dragged down
+   (dialog.js). Only on mobile, the centered card has neither */
+.dialog__header::before {
+    content: "";
+    position: absolute;
+    top: 0.5rem;
+    left: 50%;
+    width: 2.5rem;
+    height: 0.25rem;
+    background-color: color-mix(in srgb, var(--color-muted) 50%, transparent);
+    border-radius: 0.125rem;
+    transform: translateX(-50%);
+}
+
+@media (min-width: 768px) {
+    .dialog__header {
+        padding-top: var(--space-m);
+        touch-action: auto;
+    }
+
+    .dialog__header::before {
+        display: none;
+    }
 }
 
 .dialog__header h2 {
@@ -874,6 +995,140 @@ body:has(dialog[open]) {
 .dialog__content h3 {
     margin-block: var(--space-l) var(--space-s);
     font-size: 1.125rem;
+}
+
+/* Photo under the title bar (same as on the card). The negative margin
+   lets it run edge to edge across the content padding */
+.dialog__image {
+    display: block;
+    width: calc(100% + 2 * var(--space-m));
+    max-width: none;
+    height: auto;
+    margin: 0 calc(-1 * var(--space-m)) var(--space-m);
+    aspect-ratio: 8 / 3;
+    object-fit: cover;
+}
+
+/* Steps as numbered red circles. The number comes from a counter, the list
+   keeps its meaning through role="list" (set in dialog.js) */
+.dialog__content ol {
+    display: grid;
+    gap: var(--space-m);
+    margin-block: var(--space-m);
+    padding: 0;
+    list-style: none;
+    counter-reset: step;
+}
+
+.dialog__content ol > li {
+    position: relative;
+    min-height: 2rem;
+    padding: 0.125rem 0 0 2.75rem;
+    counter-increment: step;
+}
+
+/* The second content value has an empty alternative text, so screen
+   readers do not read the number twice (the list announces the position) */
+.dialog__content ol > li::before {
+    content: counter(step);
+    content: counter(step) / "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    font-weight: 700;
+    color: var(--color-on-primary);
+    background-color: var(--color-primary);
+    border-radius: 50%;
+}
+
+/* Tips (green) and safety notes (red) as tinted boxes with a colored edge.
+   The heading names the kind of note, so color is not the only signal */
+.dialog__note {
+    margin-top: var(--space-l);
+    padding: var(--space-m);
+    background-color: color-mix(in srgb, var(--color-secondary) 12%, var(--color-surface));
+    border-left: 0.25rem solid var(--color-secondary);
+    border-radius: 0 0.5rem 0.5rem 0;
+}
+
+.dialog__note--warning {
+    background-color: color-mix(in srgb, var(--color-primary) 10%, var(--color-surface));
+    border-left-color: var(--color-primary);
+}
+
+.dialog__note h3 {
+    margin-top: 0;
+}
+
+.dialog__note > :last-child {
+    margin-bottom: 0;
+}
+
+/* Profile of a variety as a tinted fact box */
+.dialog__content dl {
+    padding: var(--space-m);
+    background-color: color-mix(in srgb, var(--color-accent) 14%, var(--color-surface));
+    border-left: 0.25rem solid var(--color-accent);
+    border-radius: 0 0.5rem 0.5rem 0;
+}
+
+/* Heat bar and value side by side */
+.dialog__heat {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-xs) var(--space-m);
+}
+
+/* "Back" / "next" to the neighbouring dialogs. Each button takes at most
+   half of the row, long titles wrap; a single button sits on its side */
+.dialog__pager {
+    display: flex;
+    gap: var(--space-m);
+    margin-top: var(--space-l);
+    padding-top: var(--space-m);
+    border-top: 1px solid var(--color-border);
+}
+
+.dialog__pager-button {
+    max-width: calc(50% - var(--space-s));
+    gap: var(--space-xs);
+    padding-inline: var(--space-s);
+}
+
+.dialog__pager-button--next {
+    margin-left: auto;
+}
+
+/* Chevron next to the title, as tall as the text and drawn with the text
+   color; it nudges in its direction on hover */
+.dialog__pager-icon {
+    flex: none;
+    width: 1.25em;
+    height: 1.25em;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .dialog__pager-icon {
+        transition: transform 0.2s var(--ease-out);
+    }
+
+    .dialog__pager-button:hover .dialog__pager-icon {
+        transform: translateX(-0.125rem);
+    }
+
+    .dialog__pager-button--next:hover .dialog__pager-icon {
+        transform: translateX(0.125rem);
+    }
 }
 
 /* Profiles (variety dialogs, chili species): term and value side by side */
