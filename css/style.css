@@ -608,7 +608,18 @@ main > h1 ~ section {
     text-decoration: none;
     border: 2px solid var(--color-primary);
     border-radius: 0.5rem;
-    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        transform 160ms var(--ease-out);
+}
+
+/* Pressed buttons shrink a touch, so a click feels like it registered */
+@media (prefers-reduced-motion: no-preference) {
+    .button:active {
+        transform: scale(0.97);
+    }
 }
 
 /* Main action: filled red */
@@ -662,6 +673,7 @@ main > h1 ~ section {
 /* Image on top, text below, button always at the bottom: flex column, so
    cards of different text length line up in the grid */
 .card {
+    position: relative;
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -669,6 +681,12 @@ main > h1 ~ section {
     background-color: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: 0.75rem;
+    /* Slight depth at rest; the hover shadow below gets stronger */
+    box-shadow: 0 1px 3px rgb(0 0 0 / 0.08);
+}
+
+[data-theme="dark"] .card {
+    box-shadow: 0 1px 3px rgb(0 0 0 / 0.4);
 }
 
 /* Same 4:3 crop for every card image, even if a photo has another format */
@@ -762,6 +780,88 @@ main > h1 ~ section {
     align-self: flex-start;
     margin-top: auto;
     margin-bottom: var(--space-m);
+}
+
+/* The whole card is clickable: the button's ::after covers the card (its
+   nearest positioned ancestor), so a click anywhere opens the dialog while
+   the button stays the one element for keyboard and screen readers. Hovering
+   the card also hovers the button. Trade-off: card text can no longer be
+   selected with the mouse */
+.card__button::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+}
+
+/* No press scale here: a transformed button becomes the containing block of
+   its ::after, which would shrink the click area to the button while the
+   mouse is down and swallow the click */
+.card__button:active {
+    transform: none;
+}
+
+/* The focus ring goes around the whole card, as the click area is the card.
+   Only where :has() works, otherwise the button keeps its own ring */
+@supports selector(:has(*)) {
+    .card:has(.card__button:focus-visible) {
+        outline: 3px solid var(--color-focus);
+        outline-offset: 2px;
+    }
+
+    .card__button:focus-visible {
+        outline: none;
+    }
+}
+
+/* With no motion preference the card lifts under the mouse and the photo
+   zooms a little inside its frame (overflow: hidden on .card). Same lift as
+   the species cards; not on touch screens, where there is no hover */
+@media (prefers-reduced-motion: no-preference) {
+    .card {
+        transition:
+            transform var(--duration-enter) var(--ease-out),
+            box-shadow var(--duration-enter) var(--ease-out);
+    }
+
+    .card__image {
+        transition: transform 300ms var(--ease-out);
+    }
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .card:hover {
+        transform: translateY(-0.25rem);
+        box-shadow: 0 0.5rem 1.25rem rgb(0 0 0 / 0.12);
+    }
+
+    [data-theme="dark"] .card:hover {
+        box-shadow: 0 0.5rem 1.25rem rgb(0 0 0 / 0.4);
+    }
+
+    .card:hover .card__image {
+        transform: scale(1.05);
+    }
+}
+
+/* Scroll-in: each card fades up while it enters the window, tied to the
+   scroll position (no JavaScript). It animates the <li>, so it does not
+   collide with the hover transform on .card. Browsers without scroll
+   timelines show the cards right away */
+@supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+        .card-list > li {
+            animation: card-in linear both;
+            animation-timeline: view();
+            animation-range: entry 0% entry 40%;
+        }
+    }
+}
+
+@keyframes card-in {
+    from {
+        opacity: 0;
+        transform: translateY(1rem);
+    }
 }
 
 /* Card grid (Anbau, Sorten, Ernte). Mobile (< 768px): one column */
@@ -2098,6 +2198,11 @@ main > .legal-section {
     .card-list--four {
         grid-template-columns: repeat(3, 1fr);
         gap: 0.5cm;
+    }
+
+    /* No scroll-in on paper */
+    .card-list > li {
+        animation: none;
     }
 
     .hero__figure img,
