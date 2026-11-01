@@ -2130,12 +2130,56 @@ detail-dialog:not(:defined) {
     accent-color: var(--color-primary);
 }
 
+/* flex: 1 lets the text take the rest of the row next to the checkbox,
+   instead of wrapping below it */
 .form-field--consent label {
+    flex: 1;
     font-weight: 400;
 }
 
 .contact-form button[type="submit"] {
     justify-self: start;
+}
+
+/* Error line below a field (added by script.js). Empty lines take no space */
+.form-field__error {
+    margin: 0;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+.form-field__error:empty {
+    display: none;
+}
+
+/* Invalid field: red border in addition to the text, not color alone */
+.form-field [aria-invalid="true"] {
+    border-color: var(--color-primary);
+}
+
+.form-field--consent [aria-invalid="true"] {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+/* The consent row wraps, so its error line sits below checkbox and text */
+.form-field--consent {
+    flex-wrap: wrap;
+}
+
+.form-field--consent .form-field__error {
+    flex-basis: 100%;
+}
+
+/* Thank-you note after sending, only visible when it has text */
+.contact-form__status:not(:empty) {
+    max-width: 40rem;
+    margin-top: var(--space-m);
+    padding: var(--space-m);
+    background-color: var(--color-surface);
+    border: 2px solid var(--color-secondary);
+    border-radius: 0.75rem;
 }
 
 /* Desktop (≥ 1200px): two columns as in the wireframe. Left: image, story

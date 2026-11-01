@@ -128,3 +128,93 @@ window.addEventListener('beforeprint', () => {
 });
 
 window.addEventListener('afterprint', syncSpecies);
+
+// Contact form (Über mich): own error messages below each field instead of
+// the browser bubbles. The rules stay in the HTML (required, type="email"),
+// the script only reads them via field.validity. Without JavaScript the
+// browser still validates on its own
+const contactForm = document.querySelector('.contact-form form');
+
+const errorMessages = {
+    'first-name': { valueMissing: 'Bitte gib deinen Vornamen ein.' },
+    'last-name': { valueMissing: 'Bitte gib deinen Nachnamen ein.' },
+    email: {
+        valueMissing: 'Bitte gib deine E-Mail-Adresse ein.',
+        typeMismatch: 'Bitte gib eine gültige E-Mail-Adresse ein, z. B. max@example.com.'
+    },
+    message: { valueMissing: 'Bitte schreib eine Nachricht.' },
+    consent: { valueMissing: 'Bitte bestätige, dass du die Datenschutzerklärung gelesen hast.' }
+};
+
+// Checks one field, shows or clears its message and returns whether it is
+// valid. Only spaces count as empty too
+function validateField(field) {
+    const messages = errorMessages[field.id] || {};
+    const isBlank = field.type !== 'checkbox' && field.value.trim() === '';
+    let message = '';
+
+    if (field.validity.valueMissing || (field.required && isBlank)) {
+        message = messages.valueMissing;
+    } else if (field.validity.typeMismatch) {
+        message = messages.typeMismatch;
+    }
+
+    document.getElementById(`${field.id}-error`).textContent = message;
+
+    if (message) {
+        field.setAttribute('aria-invalid', 'true');
+    } else {
+        field.removeAttribute('aria-invalid');
+    }
+
+    return !message;
+}
+
+if (contactForm) {
+    const fields = [...contactForm.querySelectorAll('input, textarea')];
+    const status = document.querySelector('.contact-form__status');
+
+    // JavaScript takes over: no browser bubbles, but an error line per field
+    // that screen readers read together with the field (aria-describedby)
+    contactForm.noValidate = true;
+
+    fields.forEach(field => {
+        const error = document.createElement('p');
+        error.className = 'form-field__error';
+        error.id = `${field.id}-error`;
+        field.closest('.form-field').append(error);
+        field.setAttribute('aria-describedby', error.id);
+    });
+
+    contactForm.addEventListener('submit', event => {
+        // The site has no server, the form is never really sent
+        event.preventDefault();
+        contactForm.dataset.submitted = 'true';
+
+        const invalidFields = fields.filter(field => !validateField(field));
+
+        if (invalidFields.length > 0) {
+            status.textContent = '';
+            invalidFields[0].focus();
+            return;
+        }
+
+        contactForm.reset();
+        delete contactForm.dataset.submitted;
+        status.textContent = 'Danke für deine Nachricht! Hinweis: Diese Website ist eine Prüfungsarbeit ohne Server, die Nachricht wird deshalb nicht wirklich verschickt.';
+    });
+
+    // After the first attempt, fields are checked again when they are left,
+    // and an error disappears as soon as the input is corrected
+    contactForm.addEventListener('focusout', event => {
+        if (contactForm.dataset.submitted && fields.includes(event.target)) {
+            validateField(event.target);
+        }
+    });
+
+    contactForm.addEventListener('input', event => {
+        if (event.target.getAttribute('aria-invalid') === 'true') {
+            validateField(event.target);
+        }
+    });
+}
