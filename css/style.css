@@ -207,9 +207,11 @@ body {
     }
 }
 
+/* Starts at 0.01, not 0: Chrome does not count fully transparent content as
+   first contentful paint, and Lighthouse then reports NO_FCP */
 @keyframes page-fade-in {
     from {
-        opacity: 0;
+        opacity: 0.01;
     }
 }
 
