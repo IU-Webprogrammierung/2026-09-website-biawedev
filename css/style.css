@@ -1899,6 +1899,36 @@ detail-dialog:not(:defined) {
     border-radius: 50%;
 }
 
+/* --- Varieties: photo credits -------------------------------------------- */
+/* Required by the CC BY and CC BY-SA licenses, so only the photos under
+   those licenses have a line: small, directly under the photo, on the card
+   and in the dialog */
+.card__credit,
+.dialog__credit {
+    font-size: 0.8125rem;
+    color: var(--color-muted);
+}
+
+.card__credit {
+    margin-block: var(--space-xs) 0;
+}
+
+/* The whole card is clickable through the ::after of its button, the links
+   in the credit must sit above that layer to stay clickable */
+.card__credit a {
+    position: relative;
+    z-index: 1;
+}
+
+/* The photo has a margin below; with a credit that gap moves below the line */
+.dialog__image:has(+ .dialog__credit) {
+    margin-bottom: var(--space-xs);
+}
+
+.dialog__credit {
+    margin-block: 0 var(--space-m);
+}
+
 /* With no motion preference the card lifts a little under the mouse (not on
    touch screens, where there is no hover) */
 @media (prefers-reduced-motion: no-preference) {
